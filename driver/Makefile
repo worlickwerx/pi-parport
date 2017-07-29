@@ -1,7 +1,11 @@
 KERNEL_VERSION ?= $(shell uname -r)
 KERNEL_PATH ?= /lib/modules/$(KERNEL_VERSION)/build
 
-obj-m += parport_gpio.o
+# ccflags-y = -DCONFIG_PARPORT_1284
+
+obj-m += parport.o parport_gpio.o
+
+parport-y = share.o ieee1284.o ieee1284_ops.o procfs.o daisy.o probe.o
 
 all: modules
 

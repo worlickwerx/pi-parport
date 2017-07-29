@@ -198,7 +198,7 @@ static struct parport_operations parport_gpio_ops = {
 	.epp_read_addr	= parport_ieee1284_epp_read_addr,
 
 	.ecp_write_data	= parport_ieee1284_ecp_write_data,
-	//.ecp_read_data	= parport_ieee1284_ecp_read_data,
+	.ecp_read_data	= parport_ieee1284_ecp_read_data,
 	.ecp_write_addr	= parport_ieee1284_ecp_write_addr,
 
 	.compat_write_data	= parport_ieee1284_write_compat,
