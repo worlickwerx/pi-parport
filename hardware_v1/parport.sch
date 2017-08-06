@@ -7022,6 +7022,32 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <text x="121.92" y="180.34" size="1.778" layer="91">VCC=5V</text>
 <text x="121.92" y="73.66" size="1.778" layer="91">VCC=5V</text>
 <text x="121.92" y="127" size="1.778" layer="91">VCC=3V3</text>
+<text x="274.32" y="213.36" size="1.778" layer="94">(1)</text>
+<text x="274.32" y="210.82" size="1.778" layer="94">(2)</text>
+<text x="274.32" y="208.28" size="1.778" layer="94">(3)</text>
+<text x="274.32" y="205.74" size="1.778" layer="94">(4)</text>
+<text x="274.32" y="203.2" size="1.778" layer="94">(5)</text>
+<text x="274.32" y="200.66" size="1.778" layer="94">(6)</text>
+<text x="274.32" y="198.12" size="1.778" layer="94">(7)</text>
+<text x="274.32" y="195.58" size="1.778" layer="94">(8)</text>
+<text x="274.32" y="193.04" size="1.778" layer="94">(9)</text>
+<text x="274.32" y="190.5" size="1.778" layer="94">(10)</text>
+<text x="274.32" y="187.96" size="1.778" layer="94">(11)</text>
+<text x="274.32" y="185.42" size="1.778" layer="94">(12)</text>
+<text x="274.32" y="182.88" size="1.778" layer="94">(13)</text>
+<text x="299.72" y="213.36" size="1.778" layer="94">(14)</text>
+<text x="299.72" y="210.82" size="1.778" layer="94">(15)</text>
+<text x="299.72" y="205.74" size="1.778" layer="94">(17)</text>
+<text x="299.72" y="203.2" size="1.778" layer="94">(18)</text>
+<text x="299.72" y="200.66" size="1.778" layer="94">(19)</text>
+<text x="299.72" y="198.12" size="1.778" layer="94">(20)</text>
+<text x="299.72" y="195.58" size="1.778" layer="94">(21)</text>
+<text x="299.72" y="193.04" size="1.778" layer="94">(22)</text>
+<text x="299.72" y="190.5" size="1.778" layer="94">(23)</text>
+<text x="299.72" y="187.96" size="1.778" layer="94">(24)</text>
+<text x="299.72" y="185.42" size="1.778" layer="94">(25)</text>
+<text x="299.72" y="208.28" size="1.778" layer="94">(16)</text>
+<text x="261.62" y="220.98" size="1.778" layer="94">DB-25 pin numbering shown in parenthesis</text>
 </plain>
 <instances>
 <instance part="K1" gate="G$1" x="289.56" y="104.14" rot="R180"/>
@@ -7136,7 +7162,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="312.42" y1="193.04" x2="312.42" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="312.42" y1="190.5" x2="312.42" y2="187.96" width="0.1524" layer="91"/>
 <wire x1="312.42" y1="187.96" x2="312.42" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="312.42" y1="185.42" x2="312.42" y2="172.72" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="185.42" x2="312.42" y2="182.88" width="0.1524" layer="91"/>
+<wire x1="312.42" y1="182.88" x2="312.42" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="297.18" y1="200.66" x2="312.42" y2="200.66" width="0.1524" layer="91"/>
 <junction x="312.42" y="200.66"/>
 <wire x1="297.18" y1="198.12" x2="312.42" y2="198.12" width="0.1524" layer="91"/>
@@ -7160,6 +7187,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="J1" gate="G$1" pin="14"/>
 <pinref part="J1" gate="G$1" pin="12"/>
 <pinref part="J1" gate="G$1" pin="10"/>
+<pinref part="J1" gate="G$1" pin="26"/>
+<wire x1="297.18" y1="182.88" x2="312.42" y2="182.88" width="0.1524" layer="91"/>
+<junction x="312.42" y="182.88"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="A" pin="G1"/>
