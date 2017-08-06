@@ -208,6 +208,32 @@ static struct parport_operations parport_gpio_ops = {
 	.owner		= THIS_MODULE,
 };
 
+static void parport_gpio_print_info (struct parport *p)
+{
+	struct parport_gpio_ctx *ctx = p->private_data;
+
+	pr_info ("%s: data on gpio pins [%d,%d,%d,%d,%d,%d,%d,%d]\n", p->name,
+                 desc_to_gpio (ctx->data->desc[7]),
+                 desc_to_gpio (ctx->data->desc[6]),
+                 desc_to_gpio (ctx->data->desc[5]),
+                 desc_to_gpio (ctx->data->desc[4]),
+                 desc_to_gpio (ctx->data->desc[3]),
+                 desc_to_gpio (ctx->data->desc[2]),
+                 desc_to_gpio (ctx->data->desc[1]),
+                 desc_to_gpio (ctx->data->desc[0]));
+	pr_info ("%s: status on gpio pins [%d,%d,%d,%d,%d]\n", p->name,
+                 desc_to_gpio (ctx->status->desc[4]),
+                 desc_to_gpio (ctx->status->desc[3]),
+                 desc_to_gpio (ctx->status->desc[2]),
+                 desc_to_gpio (ctx->status->desc[1]),
+                 desc_to_gpio (ctx->status->desc[0]));
+	pr_info ("%s: control on gpio pins [%d,%d,%d,%d]\n", p->name,
+                 desc_to_gpio (ctx->control->desc[3]),
+                 desc_to_gpio (ctx->control->desc[2]),
+                 desc_to_gpio (ctx->control->desc[1]),
+                 desc_to_gpio (ctx->control->desc[0]));
+}
+
 static void parport_gpio_detach (struct parport_gpio_ctx *ctx)
 {
 	if (ctx) {
@@ -259,26 +285,6 @@ static int parport_gpio_attach (struct device *dev,
 		if (gpiod_cansleep (ctx->control->desc[i]))
 			goto out_cansleep;
 	}
-	pr_info ("parport_gpio: data on gpio pins [%d,%d,%d,%d,%d,%d,%d,%d]\n",
-                 desc_to_gpio (ctx->data->desc[7]),
-                 desc_to_gpio (ctx->data->desc[6]),
-                 desc_to_gpio (ctx->data->desc[5]),
-                 desc_to_gpio (ctx->data->desc[4]),
-                 desc_to_gpio (ctx->data->desc[3]),
-                 desc_to_gpio (ctx->data->desc[2]),
-                 desc_to_gpio (ctx->data->desc[1]),
-                 desc_to_gpio (ctx->data->desc[0]));
-	pr_info ("parport_gpio: status on gpio pins [%d,%d,%d,%d,%d]\n",
-                 desc_to_gpio (ctx->status->desc[4]),
-                 desc_to_gpio (ctx->status->desc[3]),
-                 desc_to_gpio (ctx->status->desc[2]),
-                 desc_to_gpio (ctx->status->desc[1]),
-                 desc_to_gpio (ctx->status->desc[0]));
-	pr_info ("parport_gpio: control on gpio pins [%d,%d,%d,%d]\n",
-                 desc_to_gpio (ctx->control->desc[3]),
-                 desc_to_gpio (ctx->control->desc[2]),
-                 desc_to_gpio (ctx->control->desc[1]),
-                 desc_to_gpio (ctx->control->desc[0]));
 	spin_lock_init (&ctx->lock);
 	*ctxp = ctx;
 	return 0;
@@ -309,6 +315,8 @@ static int parport_gpio_probe(struct platform_device *op)
 
 	dev_set_drvdata (&op->dev, p);
 
+	parport_gpio_print_info (p);
+
 	parport_announce_port (p);
 	return 0;
 out_detach:
@@ -325,7 +333,7 @@ static int parport_gpio_remove(struct platform_device *op)
 	p->private_data = NULL;
 
 	parport_remove_port (p);
-	parport_put_port (p);
+	parport_del_port (p);
 
 	dev_set_drvdata (&op->dev, NULL);
 
