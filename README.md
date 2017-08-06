@@ -3,7 +3,7 @@
 This is a PC style parallel port for the Raspberry Pi.  Seventeen GPIO pins
 are organized as data, status, and control registers.  Three
 [74AHCT541 octal buffers/drivers with 3-state outputs](http://www.ti.com/product/SN74AHCT541)
-convert to/from the Pi's 3V3 line level and the parallel port's 5V.  A
+chips convert to/from the Pi's 3V3 line level and the parallel port's 5V.  A
 `parport-gpio` driver integrates the port with the Linux parport driver stack.
 
 This project is a pretty bare bones parallel port.  It is unidirectional,
@@ -55,4 +55,4 @@ A version 2 of the hardware might have the following improvements:
 * implement bidirectional data port
 * add termination as defined in IEEE 1284
 * implement (optional) interrupt on low to high transition of nACK
-* use the [SN74LVC1612844 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284)
+* use the [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284)
