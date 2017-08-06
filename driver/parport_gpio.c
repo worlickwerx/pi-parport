@@ -112,9 +112,27 @@ static unsigned char
 parport_gpio_frob_control(struct parport *p, unsigned char mask,
 			   unsigned char val)
 {
-	unsigned char old = parport_gpio_read_control(p);
-	parport_gpio_write_control(p, (old & ~mask) ^ val);
-	return old;
+	struct parport_gpio_ctx *ctx = p->private_data;
+	unsigned long flags;
+
+	spin_lock_irqsave (&ctx->lock, flags);
+
+	if ((mask & 1)) { // ~Strobe
+		gpiod_set_raw_value(ctx->control->desc[0], ~(val & 1));
+	}
+	if ((mask & 2)) { // ~nAutoLF
+		gpiod_set_raw_value(ctx->control->desc[1], ~((val >> 1) & 1));
+	}
+	if ((mask & 4)) { // nInitialize
+		gpiod_set_raw_value(ctx->control->desc[2], (val >> 2) & 1);
+	}
+	if ((mask & 8)) { // ~nSelect
+		gpiod_set_raw_value(ctx->control->desc[3], ~((val >> 3) & 1));
+	}
+
+	spin_unlock_irqrestore (&ctx->lock, flags);
+
+	return parport_gpio_read_control (p);
 }
 
 static unsigned char
