@@ -1,7 +1,8 @@
 ## pi-parport
 
 This is a PC style parallel port for the Raspberry Pi.  Seventeen GPIO pins
-are organized as data, status, and control registers.  Three 74AHCT541 buffers
+are organized as data, status, and control registers.  Three
+[74AHCT541 octal buffers/drivers with 3-state outputs](http://www.ti.com/product/SN74AHCT541)
 convert to/from the Pi's 3V3 line level and the parallel port's 5V.  A
 `parport-gpio` driver integrates the port with the Linux parport driver stack.
 
@@ -47,16 +48,10 @@ after which you could probe your camera.
 
 ### Next Steps
 
-The first prototype board isn't offical HAT size, lacks an EEPROM,
-lacks termination, and probably should have a 26-pin dual row
-connector instead of the larger DB25 footprint.
-
-The driver OOPSes in `parport_daisy_init()` if the parport stack is
-built with 1284 support, so that should be run down.
-
-Depending on what other uses are found for this project, we might
-want to implement bidirectional ports, EPP mode, interrupts, etc..
-
-One could make a hobby out of shoving Raspberry Pi's in old hardware
-to make them useful again.  If anyone wants to drive this idea somewhere
-fun, I'll gladly cheer them on!
+A version 2 of the hardware might have the following improvements:
+* reduce size to official HAT dimensions
+* include an EEPROM to automate the device tree overlay/driver loading
+* implement bidirectional data port
+* add termination as defined in IEEE 1284
+* implement (optional) interrupt on low to high transition of nACK
+* use the [SN74LVC1612844 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284)
