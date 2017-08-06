@@ -130,7 +130,7 @@ parport_gpio_read_status(struct parport *p)
 	status |= (gpiod_get_raw_value (ctx->status->desc[1]) << 4); // Select
 	status |= (gpiod_get_raw_value (ctx->status->desc[2]) << 5); // Paperout
 	status |= (gpiod_get_raw_value (ctx->status->desc[3]) << 6); // nAck
-	status |= (~gpiod_get_raw_value (ctx->status->desc[4]) << 7); // ~Busy
+	status |= (~gpiod_get_raw_value (ctx->status->desc[4]) & 1) << 7;//~Busy
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 
