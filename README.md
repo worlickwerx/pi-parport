@@ -49,7 +49,8 @@ after which you could probe your camera.
 ### Next Steps
 
 A version 2 of the hardware might have the following improvements:
-* reduce size to official HAT dimensions
+* reduce size to official
+[Raspberry Pi HAT](https://github.com/raspberrypi/hats) dimensions
 * include an EEPROM to automate the device tree overlay/driver loading
 * implement bidirectional data port
 * add termination as defined in IEEE 1284
