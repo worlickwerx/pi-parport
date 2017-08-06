@@ -80,10 +80,10 @@ parport_gpio_read_control(struct parport *p)
 
 	spin_lock_irqsave (&ctx->lock, flags);
 
-	control = gpiod_get_raw_value (ctx->control->desc[0]);
-	control |= (gpiod_get_raw_value (ctx->control->desc[1]) << 1);
-	control |= (gpiod_get_raw_value (ctx->control->desc[2]) << 2);
-	control |= (gpiod_get_raw_value (ctx->control->desc[3]) << 3);
+	control =  (~gpiod_get_raw_value (ctx->control->desc[0]) & 1) << 0;
+	control |= (~gpiod_get_raw_value (ctx->control->desc[1]) & 1) << 1;
+	control |= gpiod_get_raw_value (ctx->control->desc[2]) << 2;
+	control |= (~gpiod_get_raw_value (ctx->control->desc[3]) & 1) << 3;
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 
