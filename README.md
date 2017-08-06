@@ -20,6 +20,11 @@ was a parport driver available, hence this little project.
 
 ### Using
 
+Since the Raspberry Pi Foundation isn't likely to configure the general
+parallel port code without hardware availability, that code (parport.ko
+and lp.ko) is included here in the drivers directory for convenience.
+The original code for this project consists of only `parport_gpio.c`.
+
 There is a device tree overlay for mapping specific GPIO pins to
 their functions in the driver.  This must be compiled and loaded.
 In the `dts` directory, run
