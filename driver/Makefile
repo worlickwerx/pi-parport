@@ -1,7 +1,7 @@
 KERNEL_VERSION ?= $(shell uname -r)
 KERNEL_PATH ?= /lib/modules/$(KERNEL_VERSION)/build
 
-# ccflags-y = -DCONFIG_PARPORT_1284
+ccflags-y = -DCONFIG_PARPORT_NOT_PC -DCONFIG_PARPORT_1284
 
 obj-m += parport.o parport_gpio.o
 
