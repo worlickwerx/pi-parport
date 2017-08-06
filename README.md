@@ -21,8 +21,8 @@ was a parport driver available, hence this little project.
 ### Using
 
 Since the Raspberry Pi Foundation isn't likely to configure the general
-parallel port code without hardware availability, that code (parport.ko
-and lp.ko) is included here in the drivers directory for convenience.
+parallel port code without hardware availability, that code (`parport.ko`
+and `lp.ko`) is included here in the drivers directory for convenience.
 The original code for this project consists of only `parport_gpio.c`.
 
 There is a device tree overlay for mapping specific GPIO pins to
@@ -32,7 +32,7 @@ In the `dts` directory, run
 $ make
 $ sudo make install
 ```
-and add the following line to /boot/config.txt:
+and add the following line to `/boot/config.txt`:
 ```
 dtoverlay=parport-gpio
 ```
