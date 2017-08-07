@@ -35,14 +35,14 @@ parport_gpio_read_data(struct parport *p)
 
 	spin_lock_irqsave (&ctx->lock, flags);
 
-	data = gpiod_get_raw_value (ctx->data->desc[0]);
-	data |= (gpiod_get_raw_value (ctx->data->desc[1]) << 1);
-	data |= (gpiod_get_raw_value (ctx->data->desc[2]) << 2);
-	data |= (gpiod_get_raw_value (ctx->data->desc[3]) << 3);
-	data |= (gpiod_get_raw_value (ctx->data->desc[4]) << 4);
-	data |= (gpiod_get_raw_value (ctx->data->desc[5]) << 5);
-	data |= (gpiod_get_raw_value (ctx->data->desc[6]) << 6);
-	data |= (gpiod_get_raw_value (ctx->data->desc[7]) << 7);
+	data = gpiod_get_value (ctx->data->desc[0]);
+	data |= (gpiod_get_value (ctx->data->desc[1]) << 1);
+	data |= (gpiod_get_value (ctx->data->desc[2]) << 2);
+	data |= (gpiod_get_value (ctx->data->desc[3]) << 3);
+	data |= (gpiod_get_value (ctx->data->desc[4]) << 4);
+	data |= (gpiod_get_value (ctx->data->desc[5]) << 5);
+	data |= (gpiod_get_value (ctx->data->desc[6]) << 6);
+	data |= (gpiod_get_value (ctx->data->desc[7]) << 7);
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 
@@ -66,7 +66,7 @@ parport_gpio_write_data(struct parport *p, unsigned char data)
 	val[5] = (data >> 5) & 1;
 	val[6] = (data >> 6) & 1;
 	val[7] = (data >> 7) & 1;
-	gpiod_set_raw_array_value (ctx->data->ndescs, ctx->data->desc, val);
+	gpiod_set_array_value (ctx->data->ndescs, ctx->data->desc, val);
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 }
@@ -80,10 +80,10 @@ parport_gpio_read_control(struct parport *p)
 
 	spin_lock_irqsave (&ctx->lock, flags);
 
-	control =  (~gpiod_get_raw_value (ctx->control->desc[0]) & 1) << 0;
-	control |= (~gpiod_get_raw_value (ctx->control->desc[1]) & 1) << 1;
-	control |= gpiod_get_raw_value (ctx->control->desc[2]) << 2;
-	control |= (~gpiod_get_raw_value (ctx->control->desc[3]) & 1) << 3;
+	control =  (~gpiod_get_value (ctx->control->desc[0]) & 1) << 0;
+	control |= (~gpiod_get_value (ctx->control->desc[1]) & 1) << 1;
+	control |= gpiod_get_value (ctx->control->desc[2]) << 2;
+	control |= (~gpiod_get_value (ctx->control->desc[3]) & 1) << 3;
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 
@@ -103,7 +103,7 @@ parport_gpio_write_control(struct parport *p, unsigned char control)
 	value[1] = (~control >> 1) & 1; // ~nAutoLF
 	value[2] = (control >> 2) & 1; // nInitialize
 	value[3] = (~control >> 3) & 1; // ~nSelect
-	gpiod_set_raw_array_value (ctx->control->ndescs, ctx->control->desc, value);
+	gpiod_set_array_value (ctx->control->ndescs, ctx->control->desc, value);
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 }
@@ -118,16 +118,16 @@ parport_gpio_frob_control(struct parport *p, unsigned char mask,
 	spin_lock_irqsave (&ctx->lock, flags);
 
 	if ((mask & 1)) { // ~Strobe
-		gpiod_set_raw_value(ctx->control->desc[0], ~(val & 1));
+		gpiod_set_value(ctx->control->desc[0], ~(val & 1));
 	}
 	if ((mask & 2)) { // ~nAutoLF
-		gpiod_set_raw_value(ctx->control->desc[1], ~((val >> 1) & 1));
+		gpiod_set_value(ctx->control->desc[1], ~((val >> 1) & 1));
 	}
 	if ((mask & 4)) { // nInitialize
-		gpiod_set_raw_value(ctx->control->desc[2], (val >> 2) & 1);
+		gpiod_set_value(ctx->control->desc[2], (val >> 2) & 1);
 	}
 	if ((mask & 8)) { // ~nSelect
-		gpiod_set_raw_value(ctx->control->desc[3], ~((val >> 3) & 1));
+		gpiod_set_value(ctx->control->desc[3], ~((val >> 3) & 1));
 	}
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
@@ -144,11 +144,11 @@ parport_gpio_read_status(struct parport *p)
 
 	spin_lock_irqsave (&ctx->lock, flags);
 
-	status = (gpiod_get_raw_value (ctx->status->desc[0]) << 3); // nError
-	status |= (gpiod_get_raw_value (ctx->status->desc[1]) << 4); // Select
-	status |= (gpiod_get_raw_value (ctx->status->desc[2]) << 5); // Paperout
-	status |= (gpiod_get_raw_value (ctx->status->desc[3]) << 6); // nAck
-	status |= (~gpiod_get_raw_value (ctx->status->desc[4]) & 1) << 7;//~Busy
+	status = (gpiod_get_value (ctx->status->desc[0]) << 3); // nError
+	status |= (gpiod_get_value (ctx->status->desc[1]) << 4); // Select
+	status |= (gpiod_get_value (ctx->status->desc[2]) << 5); // Paperout
+	status |= (gpiod_get_value (ctx->status->desc[3]) << 6); // nAck
+	status |= (~gpiod_get_value (ctx->status->desc[4]) & 1) << 7;//~Busy
 
 	spin_unlock_irqrestore (&ctx->lock, flags);
 
