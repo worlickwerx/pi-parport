@@ -39,15 +39,15 @@
 					     <&gpio 24 0>,
 					     <&gpio 23 0>,
 					     <&gpio 22 0>;
-				status-gpios = <&gpio 2 0>,
-					       <&gpio 3 0>,
-					       <&gpio 4 0>,
-					       <&gpio 17 0>,
-					       <&gpio 18 0>;
-				control-gpios = <&gpio 13 0>,
-					        <&gpio 6 0>,
-					        <&gpio 19 0>,
-					        <&gpio 26 0>;
+				status-gpios = <&gpio 2 0>, // nError
+					       <&gpio 3 0>, // Select
+					       <&gpio 4 0>, // Paperout
+					       <&gpio 17 0>, // nAck
+					       <&gpio 18 1>; // |Busy
+				control-gpios = <&gpio 13 1>, // ~nStrobe
+					        <&gpio 6 1>, // ~nAutoLF
+					        <&gpio 19 0>, // nInitialize
+					        <&gpio 26 1>; // ~nSelect
 			};
 		};
 	};
