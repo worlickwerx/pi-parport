@@ -8,16 +8,16 @@
 		target = <&gpio>;
 		__overlay__ {
 			data_pins: data_pins {
-				brcm,pins =     <11  8  9 25 10 24 23 22>;
-				brcm,function = < 1  1  1  1  1  1  1  1>; // out
+				brcm,pins =     <11 8 9 25 10 24 23 22>;
+				brcm,function = <1  1 1 1  1  1  1  1>; // out
 			};
 			status_pins: status_pins {
-				brcm,pins =     < 2  3  4 17 18>;
-				brcm,function = < 0  0  0  0  0>; // in
+				brcm,pins =     <2 3 4 17 18>;
+				brcm,function = <0 0 0 0  0>; // in
 			};
 			control_pins: control_pins {
-				brcm,pins =     <13  6 19 26>;
-				brcm,function = < 1  1  1  1>; // out
+				brcm,pins =     <13 6 19 26>;
+				brcm,function = <1  1 1  1>; // out
 			};
 		};
 	};
@@ -43,7 +43,7 @@
 					       <&gpio 3 0>, // Select
 					       <&gpio 4 0>, // Paperout
 					       <&gpio 17 0>, // nAck
-					       <&gpio 18 1>; // |Busy
+					       <&gpio 18 1>; // ~Busy
 				control-gpios = <&gpio 13 1>, // ~nStrobe
 					        <&gpio 6 1>, // ~nAutoLF
 					        <&gpio 19 0>, // nInitialize
