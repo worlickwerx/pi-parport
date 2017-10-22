@@ -186,6 +186,10 @@
 <wire x1="110.9" y1="3.8" x2="110.9" y2="59.8" width="0.1" layer="46"/>
 <wire x1="110.9" y1="59.8" x2="45.862" y2="59.8" width="0.1" layer="46"/>
 <circle x="49.4" y="7.3" radius="1.55" width="3.1" layer="42"/>
+<text x="50.165" y="12.954" size="1.778" layer="25">1</text>
+<text x="47.625" y="12.954" size="1.778" layer="25">2</text>
+<text x="82.931" y="7.747" size="1.016" layer="25">(C) 2017 WorlickWerx</text>
+<text x="89.154" y="10.033" size="1.778" layer="25">pi-parport v2</text>
 </plain>
 <libraries>
 <library name="FLYFISH">
@@ -2134,12 +2138,17 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="93.599" y="31.496" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="J1" library="SparkFun-Connectors" package="2X13" value="" x="50.8" y="16.256" rot="R90"/>
-<element name="U1" library="worlickwerx" package="SOP63P1035X279-48N" value="SN74LVC161284DL" x="81.534" y="32.639" rot="R270">
+<element name="U1" library="worlickwerx" package="SOP63P1035X279-48N" value="SN74LVC161284DL" x="81.534" y="32.639" smashed="yes" rot="R270">
 <attribute name="SUPPLIER" value="Texas Instruments" x="81.534" y="32.639" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="PACKAGE" value="48-SSOP" x="81.534" y="32.639" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="SN74LVC161284DL" x="81.534" y="32.639" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="89.6112" y="36.449" size="2.0828" layer="25" ratio="10" rot="SR0"/>
+<attribute name="VALUE" x="70.7136" y="38.5826" size="2.0828" layer="27" ratio="10" rot="SR270"/>
 </element>
-<element name="R1" library="resistor" package="R0805" value="1.4K" x="71.882" y="32.512" rot="R270"/>
+<element name="R1" library="resistor" package="R0805" value="1.4K" x="71.882" y="32.512" smashed="yes" rot="R270">
+<attribute name="NAME" x="70.739" y="29.337" size="1.27" layer="25"/>
+<attribute name="VALUE" x="69.342" y="33.147" size="1.27" layer="27" rot="R270"/>
+</element>
 </elements>
 <signals>
 <signal name="S$28">
@@ -2181,18 +2190,30 @@ design rules under a new name.</description>
 <contactref element="U1" pad="15"/>
 <contactref element="U1" pad="39"/>
 <contactref element="U1" pad="34"/>
-<polygon width="0.254" layer="1" isolate="0.254">
+<polygon width="0.254" layer="1" isolate="0.4064">
 <vertex x="45.847" y="59.817"/>
 <vertex x="110.871" y="59.817"/>
 <vertex x="110.871" y="3.683"/>
 <vertex x="45.847" y="3.683"/>
 </polygon>
-<polygon width="0.254" layer="16" isolate="0.3048">
+<polygon width="0.254" layer="16" isolate="0.4064">
 <vertex x="45.847" y="59.817"/>
 <vertex x="110.998" y="59.817"/>
 <vertex x="110.998" y="3.683"/>
 <vertex x="45.847" y="3.683"/>
 </polygon>
+<wire x1="83.1088" y1="37.465" x2="83.1088" y2="27.813" width="0.3048" layer="1"/>
+<contactref element="U1" pad="19"/>
+<contactref element="U1" pad="6"/>
+<wire x1="79.9592" y1="37.465" x2="79.9592" y2="32.004" width="0.3048" layer="1"/>
+<wire x1="79.9592" y1="32.004" x2="79.9592" y2="27.813" width="0.3048" layer="1"/>
+<wire x1="85.6488" y1="37.465" x2="85.6488" y2="35.5092" width="0.3048" layer="1"/>
+<wire x1="85.6488" y1="35.5092" x2="87.503" y2="33.655" width="0.3048" layer="1"/>
+<wire x1="87.503" y1="33.655" x2="90.998" y2="33.655" width="0.3048" layer="1"/>
+<wire x1="90.998" y1="33.655" x2="91.059" y2="33.716" width="0.3048" layer="1"/>
+<wire x1="77.4192" y1="37.465" x2="77.4192" y2="34.544" width="0.3048" layer="1"/>
+<wire x1="77.4192" y1="34.544" x2="79.9592" y2="32.004" width="0.3048" layer="1"/>
+<wire x1="85.6488" y1="37.465" x2="83.1088" y2="37.465" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="K1" pad="1"/>

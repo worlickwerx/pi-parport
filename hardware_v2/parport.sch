@@ -7066,6 +7066,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
 <part name="R1" library="resistor" deviceset="R-EU_" device="R0805" value="1.4K"/>
 <part name="P+2" library="supply1" deviceset="+5V" device=""/>
+<part name="GND4" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7132,6 +7133,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="P+2" gate="1" x="248.92" y="124.46" smashed="yes">
 <attribute name="VALUE" x="251.46" y="127" size="1.778" layer="96" rot="R180"/>
 </instance>
+<instance part="GND4" gate="1" x="160.02" y="104.14"/>
 </instances>
 <busses>
 </busses>
@@ -7233,6 +7235,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="C2" gate="G$1" pin="2"/>
 <pinref part="GND7" gate="1" pin="GND"/>
 <wire x1="73.66" y1="38.1" x2="73.66" y2="35.56" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U1" gate="A" pin="PERI_IN"/>
+<pinref part="GND4" gate="1" pin="GND"/>
+<wire x1="182.88" y1="147.32" x2="160.02" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="147.32" x2="160.02" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="U1" gate="A" pin="A13"/>
+<wire x1="182.88" y1="152.4" x2="160.02" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="152.4" x2="160.02" y2="147.32" width="0.1524" layer="91"/>
+<junction x="160.02" y="147.32"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
