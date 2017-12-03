@@ -19,6 +19,14 @@
 				brcm,pins =     <13 6 19 26>;
 				brcm,function = <1  1 1  1>; // out
 			};
+			hd_pin: hd_pin {
+				brcm,pins =     <20>;
+				brcm,function = <1>; // out
+			};
+			dir_pin: dir_pin {
+				brcm,pins =     <21>;
+				brcm,function = <1>; // out
+			};
 		};
 	};
 
@@ -48,6 +56,9 @@
 					        <&gpio 6 1>, // ~nAutoLF
 					        <&gpio 19 0>, // nInitialize
 					        <&gpio 26 1>; // ~nSelect
+				// 74LVC161284 pins in v2 design
+				hd-gpio = <&gpio 20 0>; // HD
+				dir-gpio = <&gpio 21 0>; // DIR
 			};
 		};
 	};
