@@ -23,6 +23,8 @@ struct parport_gpio_ctx {
 	struct gpio_descs *data;
 	struct gpio_descs *status;
 	struct gpio_descs *control;
+	struct gpio_desc *hd;	// v2 only: 74LVC161284 HD pin
+	struct gpio_desc *dir;	// v2 only: 74LVC161284 DIR pin
 	spinlock_t lock;
 };
 
@@ -250,6 +252,12 @@ static void parport_gpio_print_info (struct parport *p)
                  desc_to_gpio (ctx->control->desc[2]),
                  desc_to_gpio (ctx->control->desc[1]),
                  desc_to_gpio (ctx->control->desc[0]));
+	if (ctx->hd)
+		pr_info ("%s: hd on gpio pin %d\n", p->name,
+			 desc_to_gpio (ctx->hd));
+	if (ctx->dir)
+		pr_info ("%s: dir on gpio pin %d\n", p->name,
+			 desc_to_gpio (ctx->dir));
 }
 
 static void parport_gpio_detach (struct parport_gpio_ctx *ctx)
@@ -261,6 +269,10 @@ static void parport_gpio_detach (struct parport_gpio_ctx *ctx)
 			gpiod_put_array (ctx->status);
 		if (ctx->control)
 			gpiod_put_array (ctx->control);
+		if (ctx->hd)
+			gpiod_put (ctx->hd);
+		if (ctx->dir)
+			gpiod_put (ctx->dir);
 		kfree (ctx);
 	}
 }
@@ -303,6 +315,18 @@ static int parport_gpio_attach (struct device *dev,
 		if (gpiod_cansleep (ctx->control->desc[i]))
 			goto out_cansleep;
 	}
+	/* v2 hardware design has SN74LVBC161284 HD and DIR pins.
+	 * If device tree overlay defines these, initialize:
+	 * DIR: 1=data flows in the A-B direction (not B-A)
+	 * HD: 1=outputs in totem pole config (not open drain)
+	 */
+	ctx->hd = gpiod_get_optional (dev, "hd", GPIOD_OUT_HIGH);
+	if (ctx->hd && gpiod_cansleep (ctx->hd))
+		goto out_cansleep;
+	ctx->dir = gpiod_get_optional (dev, "dir", GPIOD_OUT_HIGH);
+	if (ctx->dir && gpiod_cansleep (ctx->dir))
+		goto out_cansleep;
+
 	spin_lock_init (&ctx->lock);
 	*ctxp = ctx;
 	return 0;
