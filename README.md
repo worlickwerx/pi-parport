@@ -1,29 +1,25 @@
 ## pi-parport
 
-This is a PC style parallel port for the Raspberry Pi.  Seventeen GPIO pins
-are organized as data, status, and control registers.  Three
-[74AHCT541 octal buffers/drivers with 3-state outputs](http://www.ti.com/product/SN74AHCT541)
-chips convert to/from the Pi's 3V3 line level and the parallel port's 5V.  A
-`parport-gpio` driver integrates the port with the Linux parport driver stack.
+This is a PC style parallel port for the Raspberry Pi.  GPIO pins
+are organized as data, status, and control registers.  A simple "Pi HAT"
+provides TTL level conversion, line conditioning, and a connector.
+A `parport-gpio` driver integrates the port with the Linux parport driver stack.
 
-This project is a pretty bare bones parallel port.  Since it's unidirectional,
-it won't support scanners, zip drives, or devices that require ECP/EPP modes.
-It will, however, work with some parallel printers - at least it worked with
-the one I had on hand, an HP Deskjet 1220C.
+### Why?
 
-The application I built this for, however, was parallel port SBIG astronomy
-cameras.  SBIG provided a Linux device driver that basically bit-bangs their
-protocol on the 8 data out and 5 status in lines.  I updated it and changed
-it to use the parport stack so it didn't need to hardwire the legacy PC port
-addresses.  That made it possible to use on non-PC hardware, provided there
-was a parport driver available, hence this little project.
+I wanted to use a parallel port based cooled astronomy camera,
+but preferred to use the compact and low-power Raspberry Pi
+over a PC at the telescope.  Parallel ports are simple devices.
+Why not build one?
 
 ### Using
 
-Since the Raspberry Pi Foundation isn't likely to configure the general
-parallel port code without hardware availability, that code (`parport.ko`
-and `lp.ko`) is included here in the drivers directory for convenience.
-The original code for this project consists of only `parport_gpio.c`.
+The Raspberry Pi Foundation isn't likely to configure their kernel with the
+parallel port stack anytime soon given the lack of hardware availability.
+For convenience, the generic parport code is included here so you can
+build it without needing to reconfigure the kernel.  This includes the
+`parport`, `lp`, and `ppdev` modules.  The original code for this project
+consists of only `parport_gpio.c`.
 
 There is a device tree overlay for mapping specific GPIO pins to
 their functions in the driver.  This must be compiled and loaded.
@@ -42,6 +38,14 @@ $ make
 $ sudo insmod parport.ko
 $ sudo insmod parport_gpio.ko
 ```
+You'll see the port announce itself on the console:
+```
+parport0: data on gpio pins [22,23,24,10,25,9,8,11]
+parport0: status on gpio pins [18,17,4,3,2]
+parport0: control on gpio pins [26,19,6,13]
+parport0: hd on gpio pin 20
+parport0: dir on gpio pin 21
+```
 If you wanted to bring up a printer, then you would
 ```
 $ sudo insmod lp.ko
@@ -49,19 +53,40 @@ $ sudo insmod lp.ko
 after which you should be able to configure CUPS to network-share your
 printer.
 
-Or if you want to play with the SBIG cameras, you would go over to
-the sbig driver directory and run
+#### SBIG parallel port cameras
+
+The motivation for this project for was to support SBIG parallel port astronomy
+cameras.  SBIG provided a Linux device driver that basically bit-bangs their
+protocol on the 8 data out and 5 status in lines.  I updated it and changed
+it to use the parport stack so it didn't need to hardwire the legacy PC port
+addresses.  That made it possible to use on non-PC hardware, provided there
+was a parport driver available.
+
+To use, go over to the sbig driver directory, follow instructions for
+installing its udev rules, then after loading the `parport` and `parport-gpio`
+modules,
 ```
 $ sudo insmod sbiglpt.ko
 ```
-after which SBIG-enabled applications will find the LPT1 camera.
+You'll see sbiglpt acquire the parallel port on the console:
+```
+sbiglpt0: using parport0
+```
+after which SBIG-enabled applications based on their SDK will find the LPT1
+camera.
 
-### Next Steps
+### v2 hardware
 
-A version 2 of the hardware might have the following improvements:
-* reduce size to official
-[Raspberry Pi HAT](https://github.com/raspberrypi/hats) dimensions
-* include an EEPROM to automate the device tree overlay/driver loading
-* implement bidirectional data port
-* add termination as defined in IEEE 1284
-* use the [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284)
+(In development)
+
+This revision of the hardware implements proper IEEE 1284 line conditioning
+and bidirectional communication with the
+[SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284).
+
+### v1 hardware
+
+Three
+[74AHCT541 octal buffers/drivers with 3-state outputs](http://www.ti.com/product/SN74AHCT541)
+chips convert to/from the Pi's 3V3 line level and the parallel port's 5V.
+This implements a unidirectional SPP parallel port.  It doesn't include
+line termination and thus is only likely to work with short cables.
