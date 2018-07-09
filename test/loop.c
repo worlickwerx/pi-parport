@@ -27,7 +27,6 @@
 
 #define DEVICE_PATH "/dev/parport0"
 #define ITERATIONS 16
-#define RITERATIONS 1
 
 void die (const char *fmt, ...)
 {
@@ -57,6 +56,8 @@ int main (int argc, char *argv[])
     if (ioctl (fd, PPSETMODE, &mode) < 0)
         die ("ioctl PPSETMODE IEEE1284_MODE_BYTE: %s\n", strerror (errno));
 
+    /* DATA[2,4:7] => STATUS[3,4:7]
+     */
     dir = 0;
     if (ioctl (fd, PPDATADIR, &dir) < 0)
         die ("ioctl PPDATADIR 0 (out): %s\n", strerror (errno));
@@ -96,20 +97,21 @@ int main (int argc, char *argv[])
     }
     printf ("%d errors\n", errors);
 
-#if 0
+    /* CONTROL[1,3] => DATA[1,3]
+     */
     dir = 1;
     if (ioctl (fd, PPDATADIR, &dir) < 0)
         die ("ioctl PPDATADIR 1 (in): %s\n", strerror (errno));
     printf ("data in reverse mode\n");
 
-    printf("Check CONTROL[1,3] => DATA[1,3] (%d iterations)\n", RITERATIONS);
+    printf("Check CONTROL[1,3] => DATA[1,3] (%d iterations)\n", ITERATIONS);
 
     errors = 0;
-    for (iter = 0; iter < RITERATIONS; iter++) {
+    for (iter = 0; iter < ITERATIONS; iter++) {
         for (i = 0; i < 16; i++) {
             out = i;
             if (ioctl (fd, PPWCONTROL, &out) < 0)
-                die ("ioctl PPWCONTROL: %s\n", strerror (errno));
+               die ("ioctl PPWCONTROL: %s\n", strerror (errno));
             if (ioctl (fd, PPRDATA, &in) < 0)
                 die ("ioctl PPRDATA: %s\n", strerror (errno));
             if ((out & (1<<1)) == (in & (1<<1))) { // CONTROL1 inverted
@@ -123,7 +125,6 @@ int main (int argc, char *argv[])
         }
     }
     printf ("%d errors\n", errors);
-#endif
 
     if (ioctl (fd, PPRELEASE) < 0)
         die ("ioctl PPRELEASE: %s\n", strerror (errno));

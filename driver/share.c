@@ -30,6 +30,7 @@
 #include <linux/sched.h>
 #include <linux/kmod.h>
 #include <linux/device.h>
+#include <linux/sched/signal.h>
 
 #include <linux/spinlock.h>
 #include <linux/mutex.h>
