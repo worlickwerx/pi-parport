@@ -24,6 +24,7 @@
 #include <linux/interrupt.h>
 #include <linux/timer.h>
 #include <linux/sched.h>
+#include <linux/sched/signal.h>
 
 #undef DEBUG /* undef me for production */
 
