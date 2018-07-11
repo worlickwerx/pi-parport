@@ -77,11 +77,11 @@ camera.
 
 ### v2 hardware
 
-(In development)
-
 This revision of the hardware implements proper IEEE 1284 line conditioning
 and bidirectional communication with the
 [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284).
+
+The board is shared on [OSHPARK](https://oshpark.com/shared_projects/Padn3qhP).
 
 ### v1 hardware
 
