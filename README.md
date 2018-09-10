@@ -2,8 +2,9 @@
 
 This is a PC style parallel port for the Raspberry Pi.  GPIO pins
 are organized as data, status, and control registers.  A simple "Pi HAT"
-provides TTL level conversion, line conditioning, and a connector.
-A `parport-gpio` driver integrates the port with the Linux parport driver stack.
+provides TTL level conversion and line conditioning, and attaches to a
+DB25 connector.  A `parport-gpio` driver integrates the port with the
+Linux parport driver stack.
 
 ### Why?
 
@@ -14,12 +15,10 @@ Why not build one?
 
 ### Using
 
-The Raspberry Pi Foundation isn't likely to configure their kernel with the
-parallel port stack anytime soon given the lack of hardware availability.
-For convenience, the generic parport code is included here so you can
-build it without needing to reconfigure the kernel.  This includes the
-`parport`, `lp`, and `ppdev` modules.  The original code for this project
-consists of only `parport_gpio.c`.
+The Raspberry Pi Foundation doesn't configure their kernel with the
+parallel port stack.  For convenience, the generic parport code is
+included here so you can build the `parport`, `lp`, and `ppdev` modules
+a la carte without needing to reconfigure the kernel.
 
 There is a device tree overlay for mapping specific GPIO pins to
 their functions in the driver.  This must be compiled and loaded.
@@ -46,16 +45,16 @@ parport0: control on gpio pins [26,19,6,13]
 parport0: hd on gpio pin 20
 parport0: dir on gpio pin 21
 ```
-If you wanted to bring up a printer, then you would
+To use a parallel printer or support user-space access to
+the parallel port, respectively, run
 ```
 $ sudo insmod lp.ko
+$ sudo insmod ppdev.ko
 ```
-after which you should be able to configure CUPS to network-share your
-printer.
 
 #### SBIG parallel port cameras
 
-The motivation for this project for was to support SBIG parallel port astronomy
+The motivation for this project was to support SBIG parallel port astronomy
 cameras.  SBIG provided a Linux device driver that basically bit-bangs their
 protocol on the 8 data out and 5 status in lines.  I updated it and changed
 it to use the parport stack so it didn't need to hardwire the legacy PC port
@@ -82,6 +81,7 @@ and bidirectional communication with the
 [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284).
 
 The board is shared on [OSHPARK](https://oshpark.com/shared_projects/Padn3qhP).
+See also: [Schematic](hardware_v2/schematic.pdf) and [Bill of Materials](hardware_v2/BOM.md).
 
 ### v1 hardware
 
