@@ -300,10 +300,8 @@ static int parport_gpio_attach(struct device *dev,
 	int i;
 
 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-	if (!ctx) {
-		pr_err("parport_gpio: out of memory\n");
+	if (!ctx)
 		goto out;
-	}
 	ctx->data = gpiod_get_array_optional(dev, "data", GPIOD_OUT_LOW);
 	if (!ctx->data || ctx->data->ndescs != 8) {
 		pr_err("parport_gpio: could not get data pins\n");
