@@ -186,8 +186,7 @@ static void parport_gpio_data_forward(struct parport *p)
 		for (i = 0; i < 8; i++) {
 			if (gpiod_direction_output(ctx->data->desc[i],
 						   GPIOD_OUT_LOW) < 0)
-				pr_err("%s: %s data%d\n", p->name, __func__,
-				       i);
+				dev_err(p->dev, "%s data%d\n", __func__, i);
 		}
 		gpiod_set_value(ctx->dir, 1);
 	}
@@ -201,8 +200,7 @@ static void parport_gpio_data_reverse(struct parport *p)
 	if (ctx->dir) {
 		for (i = 0; i < 8; i++) {
 			if (gpiod_direction_input(ctx->data->desc[i]) < 0)
-				pr_err("%s: %s data%d\n", p->name, __func__,
-				       i);
+				dev_err(p->dev, "%s data%d\n", __func__, i);
 		}
 		gpiod_set_value(ctx->dir, 0);
 	}
@@ -248,7 +246,7 @@ static void parport_gpio_print_info(struct parport *p)
 {
 	struct parport_gpio_ctx *ctx = p->private_data;
 
-	pr_info("%s: data on gpio pins [%d,%d,%d,%d,%d,%d,%d,%d]\n", p->name,
+	dev_info(p->dev, "data on pins [%d,%d,%d,%d,%d,%d,%d,%d]\n",
 		desc_to_gpio(ctx->data->desc[7]),
 		desc_to_gpio(ctx->data->desc[6]),
 		desc_to_gpio(ctx->data->desc[5]),
@@ -257,22 +255,22 @@ static void parport_gpio_print_info(struct parport *p)
 		desc_to_gpio(ctx->data->desc[2]),
 		desc_to_gpio(ctx->data->desc[1]),
 		desc_to_gpio(ctx->data->desc[0]));
-	pr_info("%s: status on gpio pins [%d,%d,%d,%d,%d]\n", p->name,
+	dev_info(p->dev, "status on pins [%d,%d,%d,%d,%d]\n",
 		desc_to_gpio(ctx->status->desc[4]),
 		desc_to_gpio(ctx->status->desc[3]),
 		desc_to_gpio(ctx->status->desc[2]),
 		desc_to_gpio(ctx->status->desc[1]),
 		desc_to_gpio(ctx->status->desc[0]));
-	pr_info("%s: control on gpio pins [%d,%d,%d,%d]\n", p->name,
+	dev_info(p->dev, "control on pins [%d,%d,%d,%d]\n",
 		desc_to_gpio(ctx->control->desc[3]),
 		desc_to_gpio(ctx->control->desc[2]),
 		desc_to_gpio(ctx->control->desc[1]),
 		desc_to_gpio(ctx->control->desc[0]));
 	if (ctx->hd)
-		pr_info("%s: hd on gpio pin %d\n", p->name,
+		dev_info(p->dev, "hd on pin %d\n",
 			desc_to_gpio(ctx->hd));
 	if (ctx->dir)
-		pr_info("%s: dir on gpio pin %d\n", p->name,
+		dev_info(p->dev, "dir on pin %d\n",
 			desc_to_gpio(ctx->dir));
 }
 
@@ -304,17 +302,17 @@ static int parport_gpio_attach(struct device *dev,
 		goto out;
 	ctx->data = gpiod_get_array_optional(dev, "data", GPIOD_OUT_LOW);
 	if (!ctx->data || ctx->data->ndescs != 8) {
-		pr_err("parport_gpio: could not get data pins\n");
+		dev_err(dev, "could not get data pins\n");
 		goto out;
 	}
 	ctx->status = gpiod_get_array_optional(dev, "status", GPIOD_IN);
 	if (!ctx->status || ctx->status->ndescs != 5) {
-		pr_err("parport_gpio: could not get status pins\n");
+		dev_err(dev, "could not get status pins\n");
 		goto out;
 	}
 	ctx->control = gpiod_get_array_optional(dev, "control", GPIOD_OUT_LOW);
 	if (!ctx->control || ctx->control->ndescs != 4) {
-		pr_err("parport_gpio: could not get control pins\n");
+		dev_err(dev, "could not get control pins\n");
 		goto out;
 	}
 	for (i = 0; i < ctx->data->ndescs; i++) {
@@ -345,7 +343,7 @@ static int parport_gpio_attach(struct device *dev,
 	*ctxp = ctx;
 	return 0;
 out_cansleep:
-	pr_err("parport_gpio: inappropriate gpio pin (can sleep)\n");
+	dev_err(dev, "inappropriate gpio pin (can sleep)\n");
 out:
 	parport_gpio_detach(ctx);
 	return -1;
@@ -363,7 +361,7 @@ static int parport_gpio_probe(struct platform_device *op)
 		goto out;
 	p = parport_register_port(base, irq, dma, &parport_gpio_ops);
 	if (!p) {
-		pr_err("parport_gpio: parport_register_port\n");
+		dev_err(&op->dev, "parport_register_port\n");
 		goto out_detach;
 	}
 	p->private_data = ctx;
