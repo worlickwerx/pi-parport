@@ -10,3 +10,6 @@ all: modules
 
 modules clean:
 	make -C $(KERNEL_PATH) M=$(shell pwd) $@
+
+check:
+	scripts/checkpatch.pl --no-tree -f parport_gpio.c
