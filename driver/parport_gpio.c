@@ -182,6 +182,7 @@ static void parport_gpio_data_forward(struct parport *p)
 
 	if (ctx->dir) {
 		int i;
+
 		for (i = 0; i < 8; i++) {
 			if (gpiod_direction_output(ctx->data->desc[i],
 						   GPIOD_OUT_LOW) < 0)
