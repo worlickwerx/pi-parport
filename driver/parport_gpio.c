@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 /* Low-level parallel port routines for GPIO.
  *
  * Author: Jim Garlick <garlick.jim@gmail.com>
