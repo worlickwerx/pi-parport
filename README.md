@@ -34,7 +34,7 @@ dtoverlay=parport-gpio
 After rebooting, run from the `drivers` directory:
 ```
 $ make
-$ sudo insmod parport.ko
+$ sudo insmod parport/parport.ko
 $ sudo insmod parport_gpio.ko
 ```
 You'll see the port announce itself on the console:
@@ -48,8 +48,8 @@ parport0: dir on gpio pin 21
 To use a parallel printer or support user-space access to
 the parallel port, respectively, run
 ```
-$ sudo insmod lp.ko
-$ sudo insmod ppdev.ko
+$ sudo insmod parport/lp.ko
+$ sudo insmod parport/ppdev.ko
 ```
 
 #### SBIG parallel port cameras
