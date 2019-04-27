@@ -1,0 +1,14 @@
+language: c
+
+sudo: false
+
+compiler:
+  - gcc
+
+addons:
+  apt:
+    sources:
+    packages:
+
+script:
+ - make -C driver check
