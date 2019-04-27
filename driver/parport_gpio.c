@@ -400,8 +400,7 @@ static int parport_gpio_remove(struct platform_device *op)
 }
 
 static const struct of_device_id parport_gpio_match[] = {
-	{
-		.compatible = "parport-gpio",
+	{ .compatible = "parport-gpio",
 	},
 	{},
 };
@@ -409,11 +408,10 @@ static const struct of_device_id parport_gpio_match[] = {
 MODULE_DEVICE_TABLE(of, parport_gpio_match);
 
 static struct platform_driver parport_gpio_driver = {
-	.driver =
-		{
-			.name = "parport-gpio",
-			.of_match_table = parport_gpio_match,
-		},
+	.driver = {
+		.name = "parport-gpio",
+		.of_match_table = parport_gpio_match,
+	},
 	.probe = parport_gpio_probe,
 	.remove = parport_gpio_remove,
 };
