@@ -39,11 +39,11 @@ $ sudo insmod parport_gpio.ko
 ```
 You'll see the port announce itself on the console:
 ```
-parport0: data on gpio pins [22,23,24,10,25,9,8,11]
-parport0: status on gpio pins [18,17,4,3,2]
-parport0: control on gpio pins [26,19,6,13]
-parport0: hd on gpio pin 20
-parport0: dir on gpio pin 21
+[4425200.988400] parport-gpio ppgpio@0: data on pins [22,23,24,10,25,9,8,11]
+[4425200.988412] parport-gpio ppgpio@0: status on pins [18,17,4,3,2]
+[4425200.988422] parport-gpio ppgpio@0: control on pins [26,19,6,13]
+[4425200.988430] parport-gpio ppgpio@0: hd on pin 20
+[4425200.988438] parport-gpio ppgpio@0: dir on pin 21
 ```
 To use a parallel printer or support user-space access to
 the parallel port, respectively, run
