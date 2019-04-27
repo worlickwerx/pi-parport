@@ -186,7 +186,7 @@ static void parport_gpio_data_forward(struct parport *p)
 		for (i = 0; i < 8; i++) {
 			if (gpiod_direction_output(ctx->data->desc[i],
 						   GPIOD_OUT_LOW) < 0)
-				pr_err("%s: %s data%d\n", p->name, __FUNCTION__,
+				pr_err("%s: %s data%d\n", p->name, __func__,
 				       i);
 		}
 		gpiod_set_value(ctx->dir, 1);
@@ -201,7 +201,7 @@ static void parport_gpio_data_reverse(struct parport *p)
 	if (ctx->dir) {
 		for (i = 0; i < 8; i++) {
 			if (gpiod_direction_input(ctx->data->desc[i]) < 0)
-				pr_err("%s: %s data%d\n", p->name, __FUNCTION__,
+				pr_err("%s: %s data%d\n", p->name, __func__,
 				       i);
 		}
 		gpiod_set_value(ctx->dir, 0);
