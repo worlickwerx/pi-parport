@@ -299,7 +299,8 @@ static int parport_gpio_attach(struct device *dev,
 	struct parport_gpio_ctx *ctx;
 	int i;
 
-	if (!(ctx = kzalloc(sizeof(*ctx), GFP_KERNEL))) {
+	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+	if (!ctx) {
 		pr_err("parport_gpio: out of memory\n");
 		goto out;
 	}
@@ -362,7 +363,8 @@ static int parport_gpio_probe(struct platform_device *op)
 
 	if (parport_gpio_attach(&op->dev, &ctx) < 0)
 		goto out;
-	if (!(p = parport_register_port(base, irq, dma, &parport_gpio_ops))) {
+	p = parport_register_port(base, irq, dma, &parport_gpio_ops);
+	if (!p) {
 		pr_err("parport_gpio: parport_register_port\n");
 		goto out_detach;
 	}
