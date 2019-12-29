@@ -1,4 +1,4 @@
-PROGS = cableTest2 loop walk
+PROGS = cableTest2 loop
 
 all: $(PROGS)
 
