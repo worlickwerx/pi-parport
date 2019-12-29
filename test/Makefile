@@ -1,4 +1,4 @@
-PROGS = loop
+PROGS = loop strobe
 
 all: $(PROGS)
 
