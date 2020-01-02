@@ -19,13 +19,14 @@ Why not build one?
 See [wiki](https://github.com/worlickwerx/pi-parport/wiki) for notes on some
 devices, and please share your experience if you try something new.
 
-The following limitations affect some software and hardware that uses the
-parallel port:
-1) The software cannot read and write the x86 port addresses directly.
-In user space, it must use the ppdev ioctl interface.  In the kernel, it must
-use the (generic) `struct parport` operations.
-2) The extra latency of GPIO multiplexing/de-multiplexing and/or system call
-access may impact the direct-access latency assumed by some bit-banged drivers.
+The following limitations of this implementation may affect software and
+hardware that uses the parallel port:
+1) The software cannot directly read and write the x86 port addresses,
+as was the custom early on.  In user space, software must use the ppdev
+ioctl interface.  In the kernel, software must use the (generic)
+`struct parport` operations.
+2) The GPIO multiplexing/de-multiplexing and/or system call access may
+impact the direct-access latency assumed by some bit-banged drivers.
 On a Pi 3, user space code can toggle a parallel port line at about 250 kHz.
 
 ### Why not use a USB Parallel Port?
@@ -110,36 +111,20 @@ If you wish to run user-space programs that use the parallel port:
 $ sudo insmod parport/ppdev.ko
 ```
 
-### v3 hardware
+### hardware
 
-This version is similar to v2.
+The latest hardware includes an ID EEPROM to conform with the
+[Raspberry Pi HAT Specification](https://github.com/raspberrypi/hats),
+and was designed with [KiCAD](https://www.kicad-pcb.org/).
+As with the previous version, the
+[SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284) takes care of buffering and line conditioning.
 
-It adds an ID EEPROM on `ID_SC`, `ID_SD` per the
-[Raspberry Pi HAT Specification](https://github.com/raspberrypi/hats).
+Populating the EEPROM doesn't buy you much at present, but it may simplify
+installation down the road if we ever push the driver and device tree
+overlay upstream.
 
-The schematic and board from v2 were redone using
-[KiCAD](https://www.kicad-pcb.org/) to make it easier for others to improve
-and remix, since KiCAD is free software.
-
-TODO: test boards when we get them back, and add BOM
-
-### v2 hardware
-
-v2 addresses the line termination and data direction limitations of v1,
-using a single, purpose-built chip, the
-[SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284).
-
-The board is shared on [OSHPARK](https://oshpark.com/shared_projects/Padn3qhP).
-See also: [Schematic](hardware_v2/schematic.pdf) and [Bill of Materials](hardware_v2/BOM.md).
-
-### v1 hardware
-
-Three
-[74AHCT541 octal buffers/drivers with 3-state outputs](http://www.ti.com/product/SN74AHCT541)
-chips convert to/from the Pi's 3V3 line level and the parallel port's 5V.
-This design does not implement bidirectional DATA lines, and ignores
-line termination.  It worked for my intended application, but only with a
-very short cable.
+Schematics and Eagle design files for [previous versions](hardware_old/)
+is still available.
 
 ### Release
 
