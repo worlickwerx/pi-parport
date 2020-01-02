@@ -119,12 +119,15 @@ and was designed with [KiCAD](https://www.kicad-pcb.org/).
 As with the previous version, the
 [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284) takes care of buffering and line conditioning.
 
+This version is shared on
+[OSHPARK](https://oshpark.com/shared_projects/gevwv2YP).
+
 Populating the EEPROM doesn't buy you much at present, but it may simplify
 installation down the road if we ever push the driver and device tree
 overlay upstream.
 
 Schematics and Eagle design files for [previous versions](hardware_old/)
-is still available.
+are still available for reference.
 
 ### Release
 
