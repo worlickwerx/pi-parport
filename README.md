@@ -7,6 +7,9 @@ to signals that conform to IEEE 1284.  A 26 pin IDC header on the
 board connects to your DB25 connector.  A `parport-gpio` driver and
 device tree overlay integrate the HAT with the Linux parport driver stack.
 
+
+![Image of pi-parport v3](hardware_v3/pi-parport.png)
+
 ### Why?
 
 I wanted to use a parallel port based cooled astronomy camera,
