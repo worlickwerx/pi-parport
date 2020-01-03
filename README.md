@@ -7,6 +7,9 @@ to signals that conform to IEEE 1284.  A 26 pin IDC header on the
 board connects to your DB25 connector.  A `parport-gpio` driver and
 device tree overlay integrate the HAT with the Linux parport driver stack.
 
+
+![Image of pi-parport v3](hardware_v3/pi-parport.png)
+
 ### Why?
 
 I wanted to use a parallel port based cooled astronomy camera,
@@ -122,11 +125,10 @@ As with the previous version, the
 This version is shared on
 [OSHPARK](https://oshpark.com/shared_projects/gevwv2YP).
 
-Populating the EEPROM doesn't buy you much at present, but it may simplify
-installation down the road if we ever push the driver and device tree
-overlay upstream.
+Populating the EEPROM and associated components on a board you're making
+yourself is optional.
 
-Schematics and Eagle design files for [previous versions](hardware_old/)
+Schematics and design files for [previous versions](hardware_old/)
 are still available for reference.
 
 ### Release
