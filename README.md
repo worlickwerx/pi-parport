@@ -125,11 +125,10 @@ As with the previous version, the
 This version is shared on
 [OSHPARK](https://oshpark.com/shared_projects/gevwv2YP).
 
-Populating the EEPROM doesn't buy you much at present, but it may simplify
-installation down the road if we ever push the driver and device tree
-overlay upstream.
+Populating the EEPROM and associated components on a board you're making
+yourself is optional.
 
-Schematics and Eagle design files for [previous versions](hardware_old/)
+Schematics and design files for [previous versions](hardware_old/)
 are still available for reference.
 
 ### Release
