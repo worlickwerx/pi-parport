@@ -69,6 +69,9 @@ F 3 "" H 1700 2000 50  0000 C CNN
 F 4 "S5750-20-ND" H 2400 2000 50  0001 C CNN "Digi-Key_PN"
 F 5 "NPPN202AFCN-RC" H 2400 2000 50  0001 C CNN "MPN"
 F 6 "Sullins Connector Solutions" H 2400 2000 50  0001 C CNN "Manufacturer"
+F 7 "through-hole (2.54mm pitch)" H 2400 2000 50  0001 C CNN "Package"
+F 8 "20x2 female header" H 2400 2000 50  0001 C CNN "Description"
+F 9 "pi GPIO header" H 2400 2000 50  0001 C CNN "Notes"
 	1    2400 2000
 	1    0    0    -1  
 $EndComp
@@ -83,6 +86,9 @@ F 3 "https://www.onsemi.com/pub/Collateral/CAT24C32-D.PDF" H 3050 5950 50  0001 
 F 4 "CAT24C32WI-GT3CT-ND" H 3050 5950 50  0001 C CNN "Digi-Key_PN"
 F 5 "CAT24C32WI-GT3" H 3050 5950 50  0001 C CNN "MPN"
 F 6 "ON Semiconductor" H 3050 5950 50  0001 C CNN "Manufacturer"
+F 7 "8-SOIC" H 3050 5950 50  0001 C CNN "Package"
+F 8 "I2C Serial EEPROM 32Kb" H 3050 5950 50  0001 C CNN "Description"
+F 9 "ID EEPROM" H 3050 5950 50  0001 C CNN "Notes"
 	1    3050 5950
 	1    0    0    -1  
 $EndComp
@@ -97,6 +103,9 @@ F 3 "" H 3700 5700 50  0001 C CNN
 F 4 "P3.90KCCT-ND" V 3700 5700 50  0001 C CNN "Digi-Key_PN"
 F 5 "ERJ-6ENF3901V" V 3700 5700 50  0001 C CNN "MPN"
 F 6 "Panasonic Electronic Components" V 3700 5700 50  0001 C CNN "Manufacturer"
+F 7 "0805" V 3700 5700 50  0001 C CNN "Package"
+F 8 "3.9K, 1/8 watt resistor" V 3700 5700 50  0001 C CNN "Description"
+F 9 "Pull-ups for ID EEPROM" V 3700 5700 50  0001 C CNN "Notes"
 	1    3700 5700
 	1    0    0    -1  
 $EndComp
@@ -111,6 +120,9 @@ F 3 "" H 3900 5700 50  0001 C CNN
 F 4 "P3.90KCCT-ND" V 3900 5700 50  0001 C CNN "Digi-Key_PN"
 F 5 "ERJ-6ENF3901V" V 3900 5700 50  0001 C CNN "MPN"
 F 6 "Panasonic Electronic Components" V 3900 5700 50  0001 C CNN "Manufacturer"
+F 7 "0805" V 3900 5700 50  0001 C CNN "Package"
+F 8 "3.9K, 1/8 watt resistor" V 3900 5700 50  0001 C CNN "Description"
+F 9 "Pull-ups for ID EEPROM" V 3900 5700 50  0001 C CNN "Notes"
 	1    3900 5700
 	1    0    0    -1  
 $EndComp
@@ -133,6 +145,9 @@ F 3 "" H 1500 6200 50  0000 C CNN
 F 4 "952-2262-ND" H 1500 6200 50  0001 C CNN "Digi-Key_PN"
 F 5 "M20-9990246" H 1500 6200 50  0001 C CNN "MPN"
 F 6 "Harwin Inc." H 1500 6200 50  0001 C CNN "Manufacturer"
+F 7 "through-hole (2.54mm pitch)" H 1500 6200 50  0001 C CNN "Package"
+F 8 "2x1 male header" H 1500 6200 50  0001 C CNN "Description"
+F 9 "Install J1 jumper to defeat EEPROM write protect" H 1500 6200 50  0001 C CNN "Notes"
 	1    1500 6200
 	-1   0    0    1   
 $EndComp
@@ -147,6 +162,9 @@ F 3 "" H 1850 5700 50  0001 C CNN
 F 4 "P10.0KCCT-ND" V 1850 5700 50  0001 C CNN "Digi-Key_PN"
 F 5 "ERJ-6ENF1002V" V 1850 5700 50  0001 C CNN "MPN"
 F 6 "Panasonic Electronic Components" V 1850 5700 50  0001 C CNN "Manufacturer"
+F 7 "0805" V 1850 5700 50  0001 C CNN "Package"
+F 8 "10K, 1/8 watt resistor" V 1850 5700 50  0001 C CNN "Description"
+F 9 "Pull-up for EEPROM write protect" V 1850 5700 50  0001 C CNN "Notes"
 	1    1850 5700
 	-1   0    0    1   
 $EndComp
@@ -447,6 +465,9 @@ F 3 "http://www.ti.com/lit/ds/symlink/sn74lvc161284.pdf" H 5975 3681 60  0001 C 
 F 4 "296-8467-1-ND" H 7800 2550 50  0001 C CNN "Digi-Key_PN"
 F 5 "SN74LVC161284DLR" H 7800 2550 50  0001 C CNN "MPN"
 F 6 "Texas Instruments" H 7800 2550 50  0001 C CNN "Manufacturer"
+F 7 "48-SSOP" H 7800 2550 50  0001 C CNN "Package"
+F 8 "19-bit bus interface with 3-state outputs" H 7800 2550 50  0001 C CNN "Description"
+F 9 "pin 1 marking oriented opposite J3" H 7800 2550 50  0001 C CNN "Notes"
 	1    7800 2550
 	1    0    0    -1  
 $EndComp
@@ -777,6 +798,9 @@ F 3 "" H 6750 3300 50  0001 C CNN
 F 4 "P1.40KCCT-ND" V 6750 3300 50  0001 C CNN "Digi-Key_PN"
 F 5 "ERJ-6ENF1401V" V 6750 3300 50  0001 C CNN "MPN"
 F 6 "Panasonic Electronic Components" V 6750 3300 50  0001 C CNN "Manufacturer"
+F 7 "0805" V 6750 3300 50  0001 C CNN "Package"
+F 8 "1.4K ohm, 1/8 watt resistor" V 6750 3300 50  0001 C CNN "Description"
+F 9 "Pull-up for STATUS3" V 6750 3300 50  0001 C CNN "Notes"
 	1    6750 3300
 	-1   0    0    1   
 $EndComp
@@ -832,6 +856,9 @@ F 3 "~" H 9150 2950 50  0001 C CNN
 F 4 "23-0877602616-ND" H 9150 2950 50  0001 C CNN "Digi-Key_PN"
 F 5 "0877602616" H 9150 2950 50  0001 C CNN "MPN"
 F 6 "Molex" H 9150 2950 50  0001 C CNN "Manufacturer"
+F 7 "through-hole (2.54mm pitch)" H 9150 2950 50  0001 C CNN "Package"
+F 8 "13x2 male header 90 degree" H 9150 2950 50  0001 C CNN "Description"
+F 9 "Straight or 90 degree depending on application" H 9150 2950 50  0001 C CNN "Notes"
 	1    9150 2950
 	1    0    0    -1  
 $EndComp

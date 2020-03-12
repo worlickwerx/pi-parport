@@ -129,6 +129,7 @@ F3 "" -1100 450 60 H V C CNN
 F4 "296-8467-1-ND" -1100 450 60 H I C CNN "Digi-Key_PN"
 F5 "SN74LVC161284DLR" -1100 450 60 H I C CNN "MPN"
 F6 "Texas Instruments" -1100 450 60 H I C CNN "Manufacturer"
+F7 "48-SSOP" -1100 450 60 H I C CNN "Package"
 DRAW
 S -2250 1050 -1400 -2100 0 1 0 f
 X HD 1 -2350 -1750 100 R 50 50 1 1 I
@@ -249,6 +250,7 @@ F3 "https://www.onsemi.com/pub/Collateral/CAT24C32-D.PDF" 0 0 50 H I C CNN
 F4 "CAT24C32WI-GT3CT-ND" 0 0 50 H I C CNN "Digi-Key_PN"
 F5 "CAT24C32WI-GT3" 0 0 50 H I C CNN "MPN"
 F6 "ON Semiconductor" 0 0 50 H I C CNN "Manufacturer"
+F7 "8-SOIC" 0 0 50 H I C CNN "Package"
 $FPLIST
  SOIC-8
 $ENDFPLIST
