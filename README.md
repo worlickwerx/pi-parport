@@ -124,6 +124,8 @@ As with the previous version, the
 
 This version is shared on
 [OSHPARK](https://oshpark.com/shared_projects/gevwv2YP).
+See the [Bill of Materials](hardware_v3/BOM.md) for parts to place on
+the board.
 
 Populating the EEPROM and associated components on a board you're making
 yourself is optional.
