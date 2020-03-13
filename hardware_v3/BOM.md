@@ -25,8 +25,8 @@ is listed here, though it cannot be used yet.
 
 Additional board mounting and connector components:
 
-| Quan | Description | Package | Supplier | Notes |
-| ---- | ----------- | ------- | -------- | ----- |
+| Quan | Description | Supplier | Notes |
+| ---- | ----------- | -------- | ----- |
 | 4    | M2.5 x 16mm brass standoff, with M2.5 nut | [Adafruit](https://www.adafruit.com/product/2336) | pi HAT standoff (height 11mm) |
 | 4    | M2.5 x 6mm philips head screw |    |    |
 | 1    | Female DB25 to female 13x2 header cable assembly | [Amazon](https://www.amazon.com/Motherboard-Parallel-Printer-bracket-socket/dp/B00PI5XF4U) | or surplus |
