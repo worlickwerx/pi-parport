@@ -3,7 +3,10 @@ KERNEL_PATH ?= /lib/modules/$(KERNEL_VERSION)/build
 
 ccflags-y = -DCONFIG_PARPORT_NOT_PC -DCONFIG_PARPORT_1284
 
+ifndef KERNEL_HAS_PARPORT
 obj-m += parport/
+endif
+
 obj-m += parport_gpio.o
 
 all: modules
