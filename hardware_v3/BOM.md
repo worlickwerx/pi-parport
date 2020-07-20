@@ -14,14 +14,7 @@ shipment.
 | 1        | R5        | P1.40KCCT-ND        | ERJ-6ENF1401V    | Panasonic Electronic Components | 0805                        | 1.4K ohm, 1/8 watt resistor               | Pull-up for STATUS3                              |
 | 1        | U1        | CAT24C32WI-GT3CT-ND | CAT24C32WI-GT3   | ON Semiconductor                | 8-SOIC                      | I2C Serial EEPROM 32Kb                    | ID EEPROM                                        |
 | 1        | U2        | 296-8467-1-ND       | SN74LVC161284DLR | Texas Instruments               | 48-SSOP (0.64mm lead pitch) | 19-bit bus interface with 3-state outputs | pin 1 marking oriented opposite J3               |
-
-One capacitor was accidentally omitted from the v3 design and has yet
-to be added.  (See issue #28.)  In the intermin, a suitable component
-is listed here, though it cannot be used yet.
-
-| Quantity | Reference | Digi-Key_PN         | MPN              | Manufacturer                    | Package                     | Description                               | Notes                                            |
-| -------- | --------- | ------------------- | ---------------- | ------------------------------- | --------------------------- | ----------------------------------------- | ------------------------------------------------ |
-| 1        | C1        | 399-1177-1-ND       | C0805C104Z5VACTU | KEMET                           | 0805                        | 100nF, 50V capacitor                      | Bypass                                           |
+| 1        | C1 C2     | 399-1177-1-ND       | C0805C104Z5VACTU | KEMET                           | 0805                        | 100nF, 50V capacitor                      | Bypass                                           |
 
 Additional board mounting and connector components:
 
