@@ -1,4 +1,4 @@
-## hardware v3 bill of materials
+## hardware v4 bill of materials
 
 These are the parts on the board from the schematic.  All of them can
 be ordered from [Digi-Key](https://www.digikey.com/) together in one
