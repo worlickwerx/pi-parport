@@ -8,7 +8,7 @@ board connects to your DB25 connector.  A `parport-gpio` driver and
 device tree overlay integrate the HAT with the Linux parport driver stack.
 
 
-![Image of pi-parport v3](hardware_v3/pi-parport.png)
+![Image of pi-parport latest](hardware_latest/pi-parport.png)
 
 ### Why?
 
@@ -122,15 +122,15 @@ and was designed with [KiCAD](https://www.kicad-pcb.org/).
 As with the previous version, the
 [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284) takes care of buffering and line conditioning.
 
-This version is shared on
+Version 3 is shared on
 [OSHPARK](https://oshpark.com/shared_projects/gevwv2YP).
-See the [Bill of Materials](hardware_v3/BOM.md) for parts to place on
+See the [Bill of Materials](hardware/v3/BOM.md) for parts to place on
 the board.
 
 Populating the EEPROM and associated components on a board you're making
 yourself is optional.
 
-Schematics and design files for [previous versions](hardware_old/)
+Schematics and design files for [previous versions](hardware/)
 are still available for reference.
 
 ### Release
