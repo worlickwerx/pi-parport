@@ -1,3 +1,24 @@
+### v4 hardware
+
+v4 mainly corrects some minor flaws in the v3 design.  Bypass
+capacitors are added, a few traces are rerouted to avoid passing under
+resistors, and the footprints for the EEPROM resistors are changed
+from 0603 to 0805.  Also, a few CAD-related inconsistencies were
+fixed, like unclosed board outline and footprints not being consistent
+between the schematic and board layout files.
+
+[Schematic](v4/pi-parport.pdf) and [Bill of Materials](v4/BOM.md).
+
+### v3 hardware
+
+v3 adds an EEPROM to be a proper HAT.  It also converts the design files 
+from Eagle to KiCad as a step to making additional board variations and 
+modifications more accessible.  Unfortunately, bypass capacitors were 
+left out of the redesign.
+
+This board is shared on [OSHPARK](https://oshpark.com/shared_projects/gevwv2YP).
+See also:  [Schematic](v3/pi-parport.pdf) and [Bill of Materials](v3/BOM.md).
+
 ### v2 hardware
 
 v2 addresses the line termination and data direction limitations of v1,
