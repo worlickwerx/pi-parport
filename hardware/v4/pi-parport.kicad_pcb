@@ -1115,7 +1115,7 @@
     (tags "resistor handsolder")
     (path /58E17715)
     (attr smd)
-    (fp_text reference R3 (at 0 -1.65) (layer F.SilkS)
+    (fp_text reference R3 (at -4.064 0) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 3.9K (at 0 1.65) (layer F.Fab)
