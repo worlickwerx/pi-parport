@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SN74LVC161284DLR
+D 19-bit IEEE 1284 bus interface
+F http://www.ti.com/lit/ds/symlink/sn74lvc161284.pdf
+$ENDCMP
+#
+#End Doc Library
