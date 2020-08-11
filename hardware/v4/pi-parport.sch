@@ -66,8 +66,8 @@ F 0 "J2" H 2750 2100 50  0000 C CNN
 F 1 "40HAT" H 2100 2100 50  0000 C CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical" H 2400 2200 50  0001 C CNN
 F 3 "" H 1700 2000 50  0000 C CNN
-F 4 "S5750-20-ND" H 2400 2000 50  0001 C CNN "Digi-Key_PN"
-F 5 "NPPN202AFCN-RC" H 2400 2000 50  0001 C CNN "MPN"
+F 4 "S7123-ND" H 2400 2000 50  0001 C CNN "Digi-Key_PN"
+F 5 "PPPC202LFBN-RC" H 2400 2000 50  0001 C CNN "MPN"
 F 6 "Sullins Connector Solutions" H 2400 2000 50  0001 C CNN "Manufacturer"
 F 7 "through-hole (2.54mm pitch)" H 2400 2000 50  0001 C CNN "Package"
 F 8 "20x2 female header" H 2400 2000 50  0001 C CNN "Description"
@@ -462,8 +462,8 @@ F 0 "U2" H 5975 3787 60  0000 C CNN
 F 1 "SN74LVC161284DLR" H 5975 3681 60  0000 C CNN
 F 2 "Package_SO:SSOP-48_7.5x15.9mm_P0.635mm" H 6700 3000 60  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/sn74lvc161284.pdf" H 5975 3681 60  0001 C CNN
-F 4 "296-8467-1-ND" H 7800 2550 50  0001 C CNN "Digi-Key_PN"
-F 5 "SN74LVC161284DLR" H 7800 2550 50  0001 C CNN "MPN"
+F 4 "296-8467-5-ND" H 7800 2550 50  0001 C CNN "Digi-Key_PN"
+F 5 "SN74LVC161284DL" H 7800 2550 50  0001 C CNN "MPN"
 F 6 "Texas Instruments" H 7800 2550 50  0001 C CNN "Manufacturer"
 F 7 "48-SSOP" H 7800 2550 50  0001 C CNN "Package"
 F 8 "19-bit bus interface with 3-state outputs" H 7800 2550 50  0001 C CNN "Description"
@@ -842,9 +842,9 @@ F 0 "J3" H 9200 3767 50  0000 C CNN
 F 1 "Conn_02x13_Odd_Even" H 9200 3676 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_2x13_P2.54mm_Horizontal" H 9150 2950 50  0001 C CNN
 F 3 "~" H 9150 2950 50  0001 C CNN
-F 4 "23-0877602616-ND" H 9150 2950 50  0001 C CNN "Digi-Key_PN"
-F 5 "0877602616" H 9150 2950 50  0001 C CNN "MPN"
-F 6 "Molex" H 9150 2950 50  0001 C CNN "Manufacturer"
+F 4 "609-3349-ND" H 9150 2950 50  0001 C CNN "Digi-Key_PN"
+F 5 "68021-226HLF" H 9150 2950 50  0001 C CNN "MPN"
+F 6 "Amphenol ICC (FCI)" H 9150 2950 50  0001 C CNN "Manufacturer"
 F 7 "through-hole (2.54mm pitch)" H 9150 2950 50  0001 C CNN "Package"
 F 8 "13x2 male header 90 degree" H 9150 2950 50  0001 C CNN "Description"
 F 9 "Straight or 90 degree depending on application" H 9150 2950 50  0001 C CNN "Notes"
