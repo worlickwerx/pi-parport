@@ -94,8 +94,8 @@ Then reboot the pi to pick up the new config.
 After rebooting, load the base modules:
 ```console
 $ cd ${TOPDIR}
-$ sudo insmod parport/parport.ko
-$ sudo insmod parport_gpio.ko
+$ sudo insmod driver/parport/parport.ko
+$ sudo insmod driver/parport_gpio.ko
 ```
 You'll see the port announce itself on the console:
 ```console
