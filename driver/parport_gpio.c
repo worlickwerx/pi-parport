@@ -55,20 +55,13 @@ static unsigned char parport_gpio_read_data(struct parport *p)
 static void parport_gpio_write_data(struct parport *p, unsigned char data)
 {
 	struct parport_gpio_ctx *ctx = p->private_data;
-	int val[8];
+	long int val = 0L;
 	unsigned long flags;
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
-	val[0] = data & 1;
-	val[1] = (data >> 1) & 1;
-	val[2] = (data >> 2) & 1;
-	val[3] = (data >> 3) & 1;
-	val[4] = (data >> 4) & 1;
-	val[5] = (data >> 5) & 1;
-	val[6] = (data >> 6) & 1;
-	val[7] = (data >> 7) & 1;
-	gpiod_set_array_value(ctx->data->ndescs, ctx->data->desc, val);
+	val |= data;
+	gpiod_set_array_value(ctx->data->ndescs, ctx->data->desc, ctx->data->info, &val);
 
 	spin_unlock_irqrestore(&ctx->lock, flags);
 }
@@ -94,16 +87,13 @@ static unsigned char parport_gpio_read_control(struct parport *p)
 static void parport_gpio_write_control(struct parport *p, unsigned char control)
 {
 	struct parport_gpio_ctx *ctx = p->private_data;
-	int value[4];
+	long int value = 0L;
 	unsigned long flags;
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
-	value[0] = control & 1; // ~nStrobe
-	value[1] = (control >> 1) & 1; // ~nAutoLF
-	value[2] = (control >> 2) & 1; // nInitialize
-	value[3] = (control >> 3) & 1; // ~nSelect
-	gpiod_set_array_value(ctx->control->ndescs, ctx->control->desc, value);
+	value |= control;
+	gpiod_set_array_value(ctx->control->ndescs, ctx->control->desc, ctx->control->info, &value);
 
 	spin_unlock_irqrestore(&ctx->lock, flags);
 }
