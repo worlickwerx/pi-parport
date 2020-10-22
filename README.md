@@ -83,15 +83,30 @@ $ cd ${TOPDIR}/dts
 $ make
 $ sudo make install
 ```
-then add the following line to `/boot/config.txt`:
+The ID EEPROM stores the name of the DT Overlay to use, and the 
+corresponding DT Overlay will be automatically loaded on boot.  If you 
+will not be using an ID EEPROM, then add the following line to 
+`/boot/config.txt`:
 ```
 dtoverlay=parport-gpio
 ```
 Then reboot the pi to pick up the new config.
 
+### Installing the Modules
+
+Install the modules to allow Linux Device Tree to automatically load
+them.
+```console
+$ cd ${TOPDIR}/driver
+$ sudo make install
+```
+Note that you will need to rebuild and reinstall the modules when you 
+update your kernel version.
+
 ### Loading the Modules
 
-After rebooting, load the base modules:
+If you did not install the modules, after rebooting, load the base 
+modules like this:
 ```console
 $ cd ${TOPDIR}
 $ sudo insmod driver/parport/parport.ko
@@ -129,6 +144,10 @@ the board.
 
 Populating the EEPROM and associated components on a board you're making
 yourself is optional.
+
+Check out the [tests](tests/) directory for some simple "smoke tests"
+on your assembled pi-parport board before attaching your more
+expensive equipment.
 
 Schematics and design files for [previous versions](hardware/)
 are still available for reference.

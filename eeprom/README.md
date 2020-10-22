@@ -40,12 +40,15 @@ $ sudo cp eepflash.sh eepdump eepmake /usr/local/bin/
 
 Back in this directory, make the image and flash the chip:
 ```console
-$ make
-eepmake board.txt board.eep
+$ make VERSION=0x0004
+eepmake board.txt board.eep overlay_name.txt
 Opening file board.txt for read
 UUID=3691bbab-1f52-42c7-9cac-01fc81d12688
 Done reading
+Opening DT file overlay_name.txt for read
+Adding 13 bytes of DT data
 Writing out...
+Writing out DT...
 Done.
 $ make flash
 sudo eepflash.sh -w -f=board.eep -t=24c32 -d=0 -a=50
@@ -59,6 +62,11 @@ Writing...
 Closing EEPROM Device.
 Done.
 ```
+Please note: Earlier versions of Raspbian are not compatible with the
+method of storing the name of the DT Overlay in EEPROM, they only
+support a DT Overlay embedded directly.  So, if you wish to use
+pi-parport with one of these, add `EMBED_DTBO=1` to the make command
+line.
 
 Edit `/boot/config.txt`, removing the line added above, then reboot.
 Then, again from this directory, run:
