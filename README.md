@@ -40,8 +40,11 @@ the parport driver stack.  If your application is a printer, go for it.
 ### Building the driver
 
 For convenience, the generic parport code is duplicated in this repo,
-since the Raspberry Pi Foundation does not ship the compiled modules in
-the `raspberrypi-kernel` package.
+since the Raspberry Pi Foundation does not ship the compiled modules
+in the `raspberrypi-kernel` package (at least in old Raspbian
+versions).  If you are intending to use a specific old version of
+Raspbian, there is the shell script `get_parport_src.sh` to assist
+you in getting the code from that particular version.
 
 Clone this repo, then run the following with `${TOPDIR}` representing the
 top level directory of the cloned repo:

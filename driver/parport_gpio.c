@@ -13,6 +13,7 @@
  * See https://lwn.net/Articles/533632/ for info on the gpiod_ API used here.
  */
 
+#include <linux/version.h>
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/parport.h>
@@ -55,13 +56,30 @@ static unsigned char parport_gpio_read_data(struct parport *p)
 static void parport_gpio_write_data(struct parport *p, unsigned char data)
 {
 	struct parport_gpio_ctx *ctx = p->private_data;
-	long int val = 0L;
 	unsigned long flags;
+#if KERNEL_VERSION(5, 4, 0) > LINUX_VERSION_CODE
+	int val[8];
+#else
+	long val = 0L;
+#endif
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
+#if KERNEL_VERSION(5, 4, 0) > LINUX_VERSION_CODE
+	val[0] = data & 1;
+	val[1] = (data >> 1) & 1;
+	val[2] = (data >> 2) & 1;
+	val[3] = (data >> 3) & 1;
+	val[4] = (data >> 4) & 1;
+	val[5] = (data >> 5) & 1;
+	val[6] = (data >> 6) & 1;
+	val[7] = (data >> 7) & 1;
+	gpiod_set_array_value(ctx->data->ndescs, ctx->data->desc, val);
+#else
 	val |= data;
-	gpiod_set_array_value(ctx->data->ndescs, ctx->data->desc, ctx->data->info, &val);
+	gpiod_set_array_value(ctx->data->ndescs, ctx->data->desc,
+			      ctx->data->info, &val);
+#endif
 
 	spin_unlock_irqrestore(&ctx->lock, flags);
 }
@@ -87,13 +105,26 @@ static unsigned char parport_gpio_read_control(struct parport *p)
 static void parport_gpio_write_control(struct parport *p, unsigned char control)
 {
 	struct parport_gpio_ctx *ctx = p->private_data;
-	long int value = 0L;
 	unsigned long flags;
+#if KERNEL_VERSION(5, 4, 0) > LINUX_VERSION_CODE
+	int value[4];
+#else
+	long value = 0L;
+#endif
 
 	spin_lock_irqsave(&ctx->lock, flags);
 
+#if KERNEL_VERSION(5, 4, 0) > LINUX_VERSION_CODE
+	value[0] = control & 1; // ~nStrobe
+	value[1] = (control >> 1) & 1; // ~nAutoLF
+	value[2] = (control >> 2) & 1; // nInitialize
+	value[3] = (control >> 3) & 1; // ~nSelect
+	gpiod_set_array_value(ctx->control->ndescs, ctx->control->desc, value);
+#else
 	value |= control;
-	gpiod_set_array_value(ctx->control->ndescs, ctx->control->desc, ctx->control->info, &value);
+	gpiod_set_array_value(ctx->control->ndescs, ctx->control->desc,
+			      ctx->control->info, &value);
+#endif
 
 	spin_unlock_irqrestore(&ctx->lock, flags);
 }

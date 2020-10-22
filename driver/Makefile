@@ -16,7 +16,8 @@ modules clean:
 	$(MAKE) -C $(KERNEL_PATH) M=$(shell pwd) $@
 
 check:
-	scripts/checkpatch.pl --no-tree -f parport_gpio.c
+	scripts/checkpatch.pl --ignore=LINUX_VERSION_CODE \
+	  --no-tree -f parport_gpio.c
 
 install:
 	mkdir -p $(MODDIR)/pi-parport
