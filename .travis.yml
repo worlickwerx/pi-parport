@@ -39,3 +39,19 @@ jobs:
     - sudo apt-get -y install linux-headers-4.15.0-106-generic
     script:
     - KERNEL_VERSION=4.15.0-106-generic KERNEL_HAS_PARPORT=1 make -C driver
+  - name: 'Build kernel module with linux-5.4.0 headers'
+    arch: amd64
+    dist: focal
+    before_install:
+    - sudo apt-get -y install libelf-dev
+    - sudo apt-get -y install linux-headers-5.4.0-52-generic
+    script:
+    - KERNEL_VERSION=5.4.0-52-generic KERNEL_HAS_PARPORT=1 make -C driver
+  - name: 'Build kernel module with linux-5.4.0 headers'
+    arch: arm64
+    dist: focal
+    before_install:
+    - sudo apt-get -y install libelf-dev
+    - sudo apt-get -y install linux-headers-5.4.0-52-generic
+    script:
+    - KERNEL_VERSION=5.4.0-52-generic KERNEL_HAS_PARPORT=1 make -C driver

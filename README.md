@@ -40,8 +40,11 @@ the parport driver stack.  If your application is a printer, go for it.
 ### Building the driver
 
 For convenience, the generic parport code is duplicated in this repo,
-since the Raspberry Pi Foundation does not ship the compiled modules in
-the `raspberrypi-kernel` package.
+since the Raspberry Pi Foundation does not ship the compiled modules
+in the `raspberrypi-kernel` package (at least in old Raspbian
+versions).  If you are intending to use a specific old version of
+Raspbian, there is the shell script `get_parport_src.sh` to assist
+you in getting the code from that particular version.
 
 Clone this repo, then run the following with `${TOPDIR}` representing the
 top level directory of the cloned repo:
@@ -83,19 +86,34 @@ $ cd ${TOPDIR}/dts
 $ make
 $ sudo make install
 ```
-then add the following line to `/boot/config.txt`:
+The ID EEPROM stores the name of the DT Overlay to use, and the 
+corresponding DT Overlay will be automatically loaded on boot.  If you 
+will not be using an ID EEPROM, then add the following line to 
+`/boot/config.txt`:
 ```
 dtoverlay=parport-gpio
 ```
 Then reboot the pi to pick up the new config.
 
+### Installing the Modules
+
+Install the modules to allow Linux Device Tree to automatically load
+them.
+```console
+$ cd ${TOPDIR}/driver
+$ sudo make install
+```
+Note that you will need to rebuild and reinstall the modules when you 
+update your kernel version.
+
 ### Loading the Modules
 
-After rebooting, load the base modules:
+If you did not install the modules, after rebooting, load the base 
+modules like this:
 ```console
 $ cd ${TOPDIR}
-$ sudo insmod parport/parport.ko
-$ sudo insmod parport_gpio.ko
+$ sudo insmod driver/parport/parport.ko
+$ sudo insmod driver/parport_gpio.ko
 ```
 You'll see the port announce itself on the console:
 ```console
@@ -129,6 +147,10 @@ the board.
 
 Populating the EEPROM and associated components on a board you're making
 yourself is optional.
+
+Check out the [tests](tests/) directory for some simple "smoke tests"
+on your assembled pi-parport board before attaching your more
+expensive equipment.
 
 Schematics and design files for [previous versions](hardware/)
 are still available for reference.
