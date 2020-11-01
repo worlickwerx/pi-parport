@@ -86,9 +86,9 @@ $ cd ${TOPDIR}/dts
 $ make
 $ sudo make install
 ```
-The ID EEPROM stores the name of the DT Overlay to use, and the 
-corresponding DT Overlay will be automatically loaded on boot.  If you 
-will not be using an ID EEPROM, then add the following line to 
+The ID EEPROM stores the name of the DT Overlay to use, and the
+corresponding DT Overlay will be automatically loaded on boot.  If you
+will not be using an ID EEPROM, then add the following line to
 `/boot/config.txt`:
 ```
 dtoverlay=parport-gpio
@@ -103,12 +103,12 @@ them.
 $ cd ${TOPDIR}/driver
 $ sudo make install
 ```
-Note that you will need to rebuild and reinstall the modules when you 
+Note that you will need to rebuild and reinstall the modules when you
 update your kernel version.
 
 ### Loading the Modules
 
-If you did not install the modules, after rebooting, load the base 
+If you did not install the modules, after rebooting, load the base
 modules like this:
 ```console
 $ cd ${TOPDIR}
