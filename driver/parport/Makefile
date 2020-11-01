@@ -13,6 +13,9 @@ all: modules
 modules clean:
 	make -C $(KERNEL_PATH) M=$(shell pwd) $@
 
-install:
+install: lp.ko parport.ko ppdev.ko
 	mkdir -p $(MODDIR)/pi-parport/parport
-	install -m 644 lp.ko parport.ko ppdev.ko $(MODDIR)/pi-parport/parport
+	install -m 644 $^ $(MODDIR)/pi-parport/parport
+
+uninstall:
+	rm -rf $(MODDIR)/pi-parport/parport

@@ -6,5 +6,8 @@ parport-gpio.dtbo: parport-gpio.dts
 install: parport-gpio.dtbo
 	cp $^ /boot/overlays/
 
+uninstall:
+	rm -f /boot/overlays/parport-gpio.dtbo
+
 clean:
 	rm -f *.dtbo
