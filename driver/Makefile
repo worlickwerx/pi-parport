@@ -19,7 +19,11 @@ check:
 	scripts/checkpatch.pl --ignore=LINUX_VERSION_CODE \
 	  --no-tree -f parport_gpio.c
 
-install:
+install: parport_gpio.ko
 	mkdir -p $(MODDIR)/pi-parport
-	install -m 644 parport_gpio.ko $(MODDIR)/pi-parport
+	install -m 644 $^ $(MODDIR)/pi-parport
 	$(MAKE) -C parport install
+
+uninstall:
+	$(MAKE) -C parport uninstall
+	rm -rf $(MODDIR)/pi-parport
