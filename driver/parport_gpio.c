@@ -287,9 +287,13 @@ static void parport_gpio_print_info(struct parport *p)
 		desc_to_gpio(ctx->control->desc[2]),
 		desc_to_gpio(ctx->control->desc[1]),
 		desc_to_gpio(ctx->control->desc[0]));
-	if (ctx->hd)
-		dev_info(p->dev, "hd on pin %d\n",
+	if (ctx->hd) {
+		int value = gpiod_get_value(ctx->hd);
+
+		dev_info(p->dev, "hd=%d (%s) on pin %d\n",
+			value, (value) ? "totem pole" : "open drain",
 			desc_to_gpio(ctx->hd));
+	}
 	if (ctx->dir)
 		dev_info(p->dev, "dir on pin %d\n",
 			desc_to_gpio(ctx->dir));
@@ -317,6 +321,7 @@ static int parport_gpio_attach(struct device *dev,
 {
 	struct parport_gpio_ctx *ctx;
 	int i;
+	u32 hd_flag;
 
 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
 	if (!ctx)
@@ -348,12 +353,15 @@ static int parport_gpio_attach(struct device *dev,
 		if (gpiod_cansleep(ctx->control->desc[i]))
 			goto out_cansleep;
 	}
-	/* v2 hardware design has SN74LVBC161284 HD and DIR pins.
+	/* v2 hardware design has SN74LVC161284 HD and DIR pins.
 	 * If device tree overlay defines these, initialize:
 	 * DIR: 1=data flows in the A-B direction (not B-A)
 	 * HD: 1=outputs in totem pole config (not open drain)
 	 */
-	ctx->hd = gpiod_get_optional(dev, "hd", GPIOD_OUT_HIGH);
+	hd_flag = 1;
+	of_property_read_u32(dev->of_node, "hd-value", &hd_flag);
+	hd_flag = (hd_flag) ? GPIOD_OUT_HIGH : GPIOD_OUT_LOW;
+	ctx->hd = gpiod_get_optional(dev, "hd", hd_flag);
 	if (ctx->hd && gpiod_cansleep(ctx->hd))
 		goto out_cansleep;
 	ctx->dir = gpiod_get_optional(dev, "dir", GPIOD_OUT_HIGH);
