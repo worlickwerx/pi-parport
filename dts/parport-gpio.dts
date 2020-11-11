@@ -59,7 +59,12 @@
 				// 74LVC161284 pins in v2 design
 				hd-gpio = <&gpio 20 0>; // HD
 				dir-gpio = <&gpio 21 0>; // DIR
+				hd-value = <1>;
 			};
 		};
+	};
+
+	__overrides__ {
+		hd = <&ppgpio>,"hd-value:0";
 	};
 };

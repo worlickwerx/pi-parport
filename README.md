@@ -93,6 +93,18 @@ will not be using an ID EEPROM, then add the following line to
 ```
 dtoverlay=parport-gpio
 ```
+The default drive mode of the parallel port output pins is
+"totem-pole" mode, which means that a high current source is provided
+for both logic level 1 and 0.  If you wish logic level 1 to be a low
+current source provided by pull-up resistors, i.e. "open-drain" mode,
+then you can set the following DT Overlay parameter:
+```
+dtoverlay=parport-gpio,hd=0
+```
+Note that if you are using an EEPROM, you will have to include the
+full DT Overlay data within your EEPROM since you cannot simply
+specify a parameter when loading by that method.
+
 Then reboot the pi to pick up the new config.
 
 ### Installing the Modules
