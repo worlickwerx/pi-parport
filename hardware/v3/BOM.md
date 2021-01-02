@@ -23,10 +23,11 @@ is listed here, though it cannot be used yet.
 | -------- | --------- | ------------------- | ---------------- | ------------------------------- | --------------------------- | ----------------------------------------- | ------------------------------------------------ |
 | 1        | C1        | 399-1177-1-ND       | C0805C104Z5VACTU | KEMET                           | 0805                        | 100nF, 50V capacitor                      | Bypass                                           |
 
-Additional board mounting and connector components:
+Additional board components, depends on needs:
 
 | Quan | Description | Supplier | Notes |
 | ---- | ----------- | -------- | ----- |
+| 1    | DIP jumper  | [Digi-Key](https://www.digikey.com/en/products/detail/sullins-connector-solutions/QPC02SXGN-RC/2618262) |       |
 | 4    | M2.5 x 16mm brass standoff, with M2.5 nut | [Adafruit](https://www.adafruit.com/product/2336) | pi HAT standoff (height 11mm) |
 | 4    | M2.5 x 6mm philips head screw |    |    |
 | 1    | Female DB25 to female 13x2 header cable assembly | [Amazon](https://www.amazon.com/Motherboard-Parallel-Printer-bracket-socket/dp/B00PI5XF4U) | or surplus |
