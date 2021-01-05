@@ -23,7 +23,9 @@ install: parport_gpio.ko
 	mkdir -p $(MODDIR)/pi-parport
 	install -m 644 $^ $(MODDIR)/pi-parport
 	$(MAKE) -C parport install
+	depmod
 
 uninstall:
 	$(MAKE) -C parport uninstall
 	rm -rf $(MODDIR)/pi-parport
+	depmod

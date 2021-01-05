@@ -115,8 +115,10 @@ them.
 $ cd ${TOPDIR}/driver
 $ sudo make install
 ```
-Note that you will need to rebuild and reinstall the modules when you
-update your kernel version.
+Note that only the `parport` and `parport_gpio` base modules will
+autoload, the `ppdev` and `lp` modules will still need to be specified
+in `/etc/modules` or otherwise.  Also, note that you will need to
+rebuild and reinstall the modules when you update your kernel version.
 
 ### Loading the Modules
 
@@ -160,7 +162,7 @@ the board.
 Populating the EEPROM and associated components on a board you're making
 yourself is optional.
 
-Check out the [tests](tests/) directory for some simple "smoke tests"
+Check out the [test](test/) directory for some simple "smoke tests"
 on your assembled pi-parport board before attaching your more
 expensive equipment.
 

@@ -2,6 +2,8 @@
 
 These tests primarily check that the bits aren't shorted, open,
 or misrouted, and the the DTS overlay is properly configured.
+Ensure that the `ppdev` module is loaded before running these
+tests.
 
 ### loop - plug A
 
