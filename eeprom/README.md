@@ -3,6 +3,12 @@
 Install J1 (or solder a zero-ohm resistor in R1) to defeat EEPROM
 write protect.
 
+To use and program your EEPROM, ensure that `/etc/modules` contains
+`i2c-dev`.  This is normally the case if you have a full installation
+of Raspbian, but if you've opted for a lite installation or a
+different operating system, this line might be missing.  Add it and
+ensure the module is loaded by typing `sudo modprobe i2c-dev`.
+
 Edit `/boot/config.txt`, adding this line temporarily so the ID bus is visible
 after boot, and reboot:
 ```
