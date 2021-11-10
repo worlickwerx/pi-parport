@@ -150,7 +150,7 @@ $ sudo insmod parport/ppdev.ko
 
 The latest hardware includes an ID EEPROM to conform with the
 [Raspberry Pi HAT Specification](https://github.com/raspberrypi/hats),
-and was designed with [KiCAD](https://www.kicad-pcb.org/).
+and was designed with [KiCAD](https://www.kicad.org/).
 As with the previous versions, the
 [SN74LVC161284 19-bit bus interface with 3-state outputs](http://www.ti.com/product/SN74LVC161284) takes care of buffering and line conditioning.
 
