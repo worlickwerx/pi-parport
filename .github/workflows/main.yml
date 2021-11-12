@@ -53,3 +53,30 @@ jobs:
         fetch-depth: 0
     - name: build driver
       run: KERNEL_VERSION=4.15.0-106-generic KERNEL_HAS_PARPORT=1 make -C driver
+
+  load-driver-latest:
+    name: build driver against running kernel and load it
+    runs-on: ubuntu-20.04
+    steps:
+    - name: install libelf-dev
+      run: sudo apt-get -y install libelf-dev
+    - name: install linux-headers
+      run: sudo apt-get install linux-headers-$(uname -r)
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        fetch-depth: 0
+    - name: build driver
+      run: KERNEL_HAS_PARPORT=1 make -C driver
+    - name: clear kernel log messages
+      run: sudo dmesg --clear
+    - name: load dependent kernel modules
+      run: sudo modprobe parport
+    - name: load driver
+      run: sudo insmod driver/parport_gpio.ko \
+    - name: print kernel log messages
+      if: always()
+      run: sudo dmesg
+    - name: unload kernel modules
+      if: always()
+      run: sudo rmmod parport_gpio parport
