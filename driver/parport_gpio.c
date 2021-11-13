@@ -445,6 +445,5 @@ module_platform_driver(parport_gpio_driver);
 
 MODULE_AUTHOR("Jim Garlick");
 MODULE_DESCRIPTION("Parport Driver for Raspberry Pi GPIO Parallel Port HAT");
-MODULE_SUPPORTED_DEVICE("Raspberry Pi GPIO Parallel Port HAT");
 MODULE_VERSION("1.0");
 MODULE_LICENSE("GPL");
