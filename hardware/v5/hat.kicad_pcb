@@ -6,9 +6,13 @@
 		(thickness 1.6)
 		(legacy_teardrops no)
 	)
-	(paper "A3")
+	(paper "USLetter")
 	(title_block
-		(date "15 nov 2012")
+		(title "Pi Parallel Port")
+		(date "2024-08-25")
+		(rev "v5")
+		(company "WorlickWerx")
+		(comment 1 "CERN-OHL-1.2")
 	)
 	(layers
 		(0 "F.Cu" signal)

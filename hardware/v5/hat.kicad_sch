@@ -3,9 +3,13 @@
 	(generator "eeschema")
 	(generator_version "8.0")
 	(uuid "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55")
-	(paper "A4")
+	(paper "USLetter")
 	(title_block
-		(date "15 nov 2012")
+		(title "Pi Parallel Port HAT+")
+		(date "2024-08-25")
+		(rev "v5")
+		(company "WorlickWerx")
+		(comment 1 "CERN-OHL-1.2")
 	)
 	(lib_symbols
 		(symbol "Connector_Generic:Conn_02x20_Odd_Even"
