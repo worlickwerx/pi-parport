@@ -39,21 +39,6 @@ jobs:
     - name: build driver
       run: KERNEL_VERSION=5.4.0-52-generic KERNEL_HAS_PARPORT=1 make -C driver
 
-  build-driver-4-15:
-    name: build driver against linux-4.15
-    runs-on: ubuntu-18.04
-    steps:
-    - name: install libelf-dev
-      run: sudo apt-get -y install libelf-dev
-    - name: install linux-headers
-      run: sudo apt-get install linux-headers-4.15.0-106-generic
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
-        fetch-depth: 0
-    - name: build driver
-      run: KERNEL_VERSION=4.15.0-106-generic KERNEL_HAS_PARPORT=1 make -C driver
-
   load-driver-latest:
     name: build driver against running kernel and load it
     runs-on: ubuntu-20.04
