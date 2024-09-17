@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "HLE-120-02-F-DV-BE")(type "KiCad")(uri "${KIPRJMOD}/lib/HLE-120-02-F-DV-BE.kicad_sym")(options "")(descr ""))
+  (lib (name "SN74LVC16128")(type "KiCad")(uri "${KIPRJMOD}/lib/SN74LVC16128.kicad_sym")(options "")(descr ""))
+)
