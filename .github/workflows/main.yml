@@ -65,3 +65,31 @@ jobs:
     - name: unload kernel modules
       if: always()
       run: sudo rmmod parport_gpio parport
+
+  check-hardware-v5:
+    name: check v5 hardware
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
+        sudo apt-get update
+        sudo apt-get install -y \
+            make \
+            kicad=8.0.5*
+    - name: initialize kicad config
+      run: |
+        mkdir -p $HOME/.config/kicad/8.0
+        cp /usr/share/kicad/template/fp-lib-table $HOME/.config/kicad/8.0/
+        cp /usr/share/kicad/template/sym-lib-table $HOME/.config/kicad/8.0/
+    - name: display kicad version
+      run: |
+        echo "Kicad:"
+        kicad-cli --version
+    - name: ERC
+      run: |
+        make -C hardware/v5 check_erc
+    - name: DRC
+      run: |
+        make -C hardware/v5 check_drc
