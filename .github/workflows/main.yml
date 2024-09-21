@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
@@ -17,7 +17,7 @@ jobs:
     name: kernel style check
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
@@ -32,7 +32,7 @@ jobs:
       run: sudo apt-get -y install libelf-dev
     - name: install linux-headers
       run: sudo apt-get install linux-headers-5.4.0-52-generic
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
@@ -47,7 +47,7 @@ jobs:
       run: sudo apt-get -y install libelf-dev
     - name: install linux-headers
       run: sudo apt-get install linux-headers-$(uname -r)
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
@@ -70,7 +70,7 @@ jobs:
     name: check v5 hardware
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: |
         sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
