@@ -2,6 +2,8 @@ all:
 
 bom.csv: hat.kicad_sch
 	../scripts/make_bom.sh $< $@
+pos_top.csv: hat.kicad_pcb
+	../scripts/make_pos.sh $< $@ front
 
 check: check_erc check_drc
 
@@ -13,3 +15,4 @@ check_drc: hat.kicad_pcb
 clean:
 	rm -f *.rpt
 	rm -f bom.csv
+	rm -f pos_top.csv
