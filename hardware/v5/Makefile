@@ -1,4 +1,4 @@
-all:
+all: cam.zip bom.csv pos_top.csv
 
 cam.zip: hat.kicad_pcb
 	../scripts/plot.sh $< $@
