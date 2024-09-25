@@ -8076,7 +8076,7 @@
 				(hide yes)
 			)
 		)
-		(property "Comment" "Harwin M20-7812045 or equiv"
+		(property "Comment" "SMT 2x20 2.54mm vert female header top/bottom entry, h<=4mm"
 			(at 57.15 82.55 0)
 			(effects
 				(font
@@ -8085,7 +8085,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2685112"
 			(at 57.15 82.55 0)
 			(effects
 				(font
@@ -8550,7 +8550,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C144659"
+		(property "LCSC" "C114616"
 			(at 93.98 170.18 0)
 			(effects
 				(font
@@ -8880,7 +8880,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C705740"
+		(property "LCSC" "C185359"
 			(at 170.18 106.68 0)
 			(effects
 				(font
@@ -9326,7 +9326,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C144659"
+		(property "LCSC" "C114616"
 			(at 101.6 170.18 0)
 			(effects
 				(font
@@ -9827,7 +9827,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2845363"
 			(at 59.69 130.81 0)
 			(effects
 				(font
@@ -10776,7 +10776,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C110776"
+		(property "LCSC" "C21190"
 			(at 109.22 170.18 0)
 			(effects
 				(font
