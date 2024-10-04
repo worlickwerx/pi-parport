@@ -10721,6 +10721,19 @@
 		(layer "Edge.Cuts")
 		(uuid "f78d019e-cf6e-46b1-83f8-3ba515696edd")
 	)
+	(gr_text "CERN-OHL-1.2"
+		(at 136.7 97.3 0)
+		(layer "B.SilkS")
+		(uuid "8b584e11-c7fb-475a-b074-aa8e6f6c68a4")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.2)
+				(bold yes)
+			)
+			(justify left bottom mirror)
+		)
+	)
 	(gr_text "(C)2024 WorlickWerx, LLC"
 		(at 136.8 99.4 0)
 		(layer "B.SilkS")
