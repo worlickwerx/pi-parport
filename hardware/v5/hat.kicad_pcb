@@ -5738,7 +5738,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C2"
-			(at 0.175 -1.68 180)
+			(at -0.695 -1.68 180)
 			(layer "F.SilkS")
 			(uuid "556b1dbe-513a-4dde-8ccd-ea3800ccbab0")
 			(effects
@@ -9621,7 +9621,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C3"
-			(at 0.18 -1.61 0)
+			(at -0.71 -1.72 0)
 			(layer "F.SilkS")
 			(uuid "4d9e01f7-908b-4c7c-bdb5-e1b4393a463e")
 			(effects
@@ -10721,21 +10721,8 @@
 		(layer "Edge.Cuts")
 		(uuid "f78d019e-cf6e-46b1-83f8-3ba515696edd")
 	)
-	(gr_text "Software and design files:\nhttps://github.com/worlickwerx/pi-parport/"
-		(at 143.7 99.58 0)
-		(layer "B.SilkS")
-		(uuid "72712112-3009-45e6-ab11-10c8a6db9135")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.2)
-				(bold yes)
-			)
-			(justify left bottom mirror)
-		)
-	)
 	(gr_text "(C)2024 WorlickWerx, LLC"
-		(at 143.94 95.36 0)
+		(at 136.8 99.4 0)
 		(layer "B.SilkS")
 		(uuid "d3d0e2e2-22b1-4b92-bdac-8d4103aa55d8")
 		(effects
@@ -10794,6 +10781,19 @@
 			(font
 				(size 1.2 1.2)
 				(thickness 0.2)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "Software and design files:\nhttps://github.com/worlickwerx/pi-parport"
+		(at 115.4 54.4 0)
+		(layer "F.SilkS")
+		(uuid "72712112-3009-45e6-ab11-10c8a6db9135")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.17)
 				(bold yes)
 			)
 			(justify left bottom)
