@@ -31,6 +31,10 @@ ioctl interface.  In the kernel, software must use the (generic)
 2) The GPIO multiplexing/de-multiplexing and/or system call access may
 impact the direct-access latency assumed by some bit-banged drivers.
 On a Pi 3, user space code can toggle a parallel port line at about 250 kHz.
+3) Bidirectional control pins are not currently supported, but bidirectional
+data pins are supported.  There are alternatives to the current buffer chip
+that would support this, but they require a slightly more complicated
+circuit.
 
 ### Why not use a USB Parallel Port?
 
